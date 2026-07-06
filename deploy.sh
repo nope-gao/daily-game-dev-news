@@ -120,4 +120,4 @@ else
 fi
 
 echo ""
-echo "✅ 三站部署完成！https://nope-gao.github.io/daily-game-dev-news/"
+echo "✅ 三站部署完成！https://nope-gao.github.io/ai-daily-express/"

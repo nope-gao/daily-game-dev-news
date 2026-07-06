@@ -2,7 +2,7 @@
 
 > 三站日报，每日精选。游戏、健康、世界，5 分钟跟上步伐。
 
-**总站**：https://nope-gao.github.io/daily-game-dev-news/
+**总站**：https://nope-gao.github.io/ai-daily-express/
 
 | 分站 | 覆盖范围 |
 |------|----------|
