@@ -1,184 +1,110 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>游戏开发 & AI 圈每日速递</title>
-    <link rel="stylesheet" href="assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Game Dev News</title>
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <div class="newspaper">
-        <!-- Hero -->
-        <div class="index-hero">
-            <div class="newspaper-subtitle">DAILY GAME DEV NEWS</div>
-            <a id="latest-link" href="#" style="color:inherit;text-decoration:none;">
-                <h1 class="newspaper-title">每日速递</h1>
-            </a>
-            <div class="newspaper-domain-tags">
-                <span class="domain-tag dev">🎮 游戏开发</span>
-                <span class="domain-tag industry">🕹️ 游戏圈</span>
-                <span class="domain-tag ai">🤖 AI圈发展</span>
-            </div>
-            <p>每日精选三大领域最新动态 — 引擎更新 · 产业新闻 · AI突破，5 分钟跟上步伐</p>
-            <a href="https://github.com/nope-gao/daily-game-dev-news" target="_blank" rel="noopener"
-               style="display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:12px 28px;
-                      background:var(--accent-cyan);color:var(--space-black);font-size:0.95em;font-weight:700;
-                      letter-spacing:2px;text-decoration:none;transition:all 0.3s ease;
-                      box-shadow:0 4px 15px rgba(6,182,212,0.4);"
-               onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 25px rgba(6,182,212,0.6)'"
-               onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 15px rgba(6,182,212,0.4)'">
-                <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
-                    0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15
-                    -.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87
-                    .51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12
-                    0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82
-                    2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65
-                    3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013
-                    0 0016 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
-                GitHub 仓库
-            </a>
-        </div>
+<div class="container">
 
-        <!-- Latest Edition Banner -->
-        <div id="latest-banner" class="keywords-banner">
-            <strong>最新一期：</strong><span id="latest-text"></span>
-        </div>
+  <div class="index-header">
+    <img src="assets/images/初音未来-可爱头像.jpg" alt="" class="avatar">
+    <h1>每日速递</h1>
+    <div class="sub">Daily Game Dev News</div>
+    <p class="desc">
+      每日精选游戏开发、游戏圈、AI 圈最新动态<br>
+      引擎更新 · 产业新闻 · AI 突破，5 分钟跟上步伐
+    </p>
+    <a href="https://github.com/nope-gao/daily-game-dev-news" target="_blank" class="gh-link">GitHub 仓库</a>
+  </div>
 
-        <!-- Archive -->
-        <h3 class="section-header" style="margin:30px 40px 20px;border-bottom-color:var(--accent-cyan);">
-            <span class="icon">📰</span> 历史存档
-        </h3>
-        <div id="archive-grid" class="archive-grid"></div>
-        <div id="pagination" class="pagination"></div>
+  <div id="latest-banner" class="latest-banner">
+    <strong>最新一期：</strong><span id="latest-text"></span>
+  </div>
 
-        <!-- Footer -->
-        <footer class="newspaper-footer">
-            <div class="footer-logo">Daily Game Dev News</div>
-            <a href="https://github.com/nope-gao/daily-game-dev-news" target="_blank" rel="noopener"
-               style="display:inline-flex;align-items:center;gap:8px;margin:10px 0;color:var(--accent-cyan);
-                      font-size:0.85em;letter-spacing:1px;text-decoration:none;opacity:0.9;transition:opacity 0.3s;"
-               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
-                    0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15
-                    -.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87
-                    .51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12
-                    0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82
-                    2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65
-                    3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013
-                    0 0016 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
-                GitHub 仓库
-            </a>
-            <p class="footer-disclaimer">
-                每日精选 · 值得关注 | 由 Hermes Agent 自动化生成
-                <br>
-                内容基于公开信息整理，以原始来源为准
-            </p>
-        </footer>
-    </div>
+  <div id="archive-grid" class="archive-grid"></div>
+  <div id="pagination" class="pagination"></div>
 
-    <script>
-    (function() {
-        // ============================================================
-        // 存档数据 — 每次新增日报时在此数组头部追加一条即可
-        // 日期格式: YYYY-MM-DD | keywords: 当日关键词标签，用 · 分隔
-        // ============================================================
-        var ARCHIVE_DATA = [
-    {
-        "date": "2026-07-06",
-        "weekday": "星期一",
-        "keywords": "Godot 4.6 · Steam 夏促 · DeepSeek V4 · 独立游戏 · AI 游戏NPC"
+  <div class="footer">
+    <img src="assets/images/大黄蜂-点头.gif" alt="" class="footer-img">
+    <div class="footer-logo">Daily Game Dev News</div>
+    <p>
+      每日精选 · 值得关注 | 由 Hermes Agent 自动化生成<br>
+      <a href="https://github.com/nope-gao/daily-game-dev-news" target="_blank">GitHub 仓库</a>
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var ARCHIVE_DATA = [];
+
+  var PAGE_SIZE = 12;
+  var currentPage = 0;
+
+  function getWeekday(s) {
+    var w = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+    return w[new Date(s + 'T00:00:00').getDay()];
+  }
+  function renderGrid(page) {
+    var grid = document.getElementById('archive-grid');
+    var pagination = document.getElementById('pagination');
+    if (!grid) return;
+    var total = ARCHIVE_DATA.length;
+    var totalPages = Math.ceil(total / PAGE_SIZE) || 1;
+    if (page >= totalPages) page = totalPages - 1;
+    if (page < 0) page = 0;
+    currentPage = page;
+    var start = page * PAGE_SIZE;
+    var end = Math.min(start + PAGE_SIZE, total);
+    var items = ARCHIVE_DATA.slice(start, end);
+    if (items.length === 0) {
+      grid.innerHTML = '<p style="text-align:center;padding:40px;color:var(--text-muted);">暂无存档记录</p>';
+      pagination.innerHTML = '';
+      return;
     }
-];
-
-        var PAGE_SIZE = 12;
-        var currentPage = 0;
-
-        function getWeekday(dateStr) {
-            var weekdays = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
-            var d = new Date(dateStr + 'T00:00:00');
-            return weekdays[d.getDay()];
-        }
-
-        function renderGrid(page) {
-            var grid = document.getElementById('archive-grid');
-            var pagination = document.getElementById('pagination');
-            if (!grid) return;
-
-            var total = ARCHIVE_DATA.length;
-            var totalPages = Math.ceil(total / PAGE_SIZE) || 1;
-            if (page >= totalPages) page = totalPages - 1;
-            if (page < 0) page = 0;
-            currentPage = page;
-
-            var start = page * PAGE_SIZE;
-            var end = Math.min(start + PAGE_SIZE, total);
-            var pageItems = ARCHIVE_DATA.slice(start, end);
-
-            if (pageItems.length === 0) {
-                grid.innerHTML = '<p style="text-align:center;padding:40px;color:#888;">暂无存档记录</p>';
-                pagination.innerHTML = '';
-                return;
-            }
-
-            var html = '';
-            for (var i = 0; i < pageItems.length; i++) {
-                var item = pageItems[i];
-                var wd = item.weekday || getWeekday(item.date);
-                var kw = item.keywords || '';
-                // 判断涵盖领域（从关键词推断）
-                var domainTag = '';
-                if (kw.includes('游戏开发') || kw.includes('引擎') || kw.includes('Godot') || kw.includes('Unity') || kw.includes('Unreal')) {
-                    domainTag = '<span class="card-domain" style="background:var(--tag-dev)">🎮 游戏开发</span>';
-                } else if (kw.includes('AI') || kw.includes('模型') || kw.includes('机器学习') || kw.includes('大模型')) {
-                    domainTag = '<span class="card-domain" style="background:var(--tag-ai)">🤖 AI</span>';
-                } else {
-                    domainTag = '<span class="card-domain" style="background:var(--tag-industry)">🕹️ 游戏圈</span>';
-                }
-                html += '<a class="archive-card" href="daily/' + item.date + '.html">' +
-                    domainTag +
-                    '<div class="card-date">' + item.date.replace(/-/g, '/') + '</div>' +
-                    '<div class="card-weekday">' + wd + '</div>' +
-                    (kw ? '<div class="card-keywords">' + kw + '</div>' : '') +
-                    '</a>';
-            }
-            grid.innerHTML = html;
-
-            // Pagination
-            var phtml = '';
-            phtml += '<button ' + (page === 0 ? 'disabled' : '') + ' onclick="window._goPage(' + (page - 1) + ')">‹ 上一页</button>';
-            for (var p = 0; p < totalPages; p++) {
-                phtml += '<button class="' + (p === page ? 'active' : '') + '" onclick="window._goPage(' + p + ')">' + (p + 1) + '</button>';
-            }
-            phtml += '<button ' + (page >= totalPages - 1 ? 'disabled' : '') + ' onclick="window._goPage(' + (page + 1) + ')">下一页 ›</button>';
-            pagination.innerHTML = phtml;
-        }
-
-        window._goPage = function(page) {
-            renderGrid(page);
-            window.scrollTo({ top: document.getElementById('archive-grid').offsetTop - 80, behavior: 'smooth' });
-        };
-
-        // 初始化：找到最新一期，更新横幅
-        function init() {
-            if (ARCHIVE_DATA.length > 0) {
-                var latest = ARCHIVE_DATA[0];
-                var latestLink = document.getElementById('latest-link');
-                if (latestLink) latestLink.href = 'daily/' + latest.date + '.html';
-                var latestText = document.getElementById('latest-text');
-                if (latestText) {
-                    var wd = latest.weekday || getWeekday(latest.date);
-                    latestText.textContent = latest.date + ' (' + wd + ')' + (latest.keywords ? ' — ' + latest.keywords : '');
-                }
-            }
-            renderGrid(0);
-        }
-
-        init();
-    })();
-    </script>
+    var html = '';
+    for (var i = 0; i < items.length; i++) {
+      var it = items[i];
+      var wd = it.weekday || getWeekday(it.date);
+      var kw = it.keywords || '';
+      html += '<a class="archive-card" href="daily/' + it.date + '.html">' +
+        '<div class="card-date">' + it.date.replace(/-/g, '/') + '</div>' +
+        '<div class="card-wd">' + wd + '</div>' +
+        (kw ? '<div class="card-kw">' + kw + '</div>' : '') +
+        '</a>';
+    }
+    grid.innerHTML = html;
+    var ph = '';
+    ph += '<button ' + (page === 0 ? 'disabled' : '') + ' onclick="window._goPage(' + (page - 1) + ')">‹ 上一页</button>';
+    for (var p = 0; p < totalPages; p++) {
+      ph += '<button class="' + (p === page ? 'active' : '') + '" onclick="window._goPage(' + p + ')">' + (p + 1) + '</button>';
+    }
+    ph += '<button ' + (page >= totalPages - 1 ? 'disabled' : '') + ' onclick="window._goPage(' + (page + 1) + ')">下一页 ›</button>';
+    pagination.innerHTML = ph;
+  }
+  window._goPage = function(page) {
+    renderGrid(page);
+    window.scrollTo({ top: document.getElementById('archive-grid').offsetTop - 60, behavior: 'smooth' });
+  };
+  function init() {
+    if (ARCHIVE_DATA.length > 0) {
+      var latest = ARCHIVE_DATA[0];
+      var link = document.getElementById('latest-link');
+      if (link) link.href = 'daily/' + latest.date + '.html';
+      var txt = document.getElementById('latest-text');
+      if (txt) {
+        txt.textContent = latest.date + ' (' + (latest.weekday || getWeekday(latest.date)) + ')' +
+          (latest.keywords ? ' - ' + latest.keywords : '');
+      }
+    }
+    renderGrid(0);
+  }
+  init();
+})();
+</script>
 </body>
 </html>
