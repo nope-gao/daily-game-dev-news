@@ -8,11 +8,100 @@
 </head>
 <body>
 <div class="container">
-  <div class="header" style="text-align:center;padding:60px 0;">
+
+  <div class="index-header">
+    <img src="../assets/images/初音未来-可爱.avif" alt="" class="avatar">
     <h1>生物 & 永生 & 健康</h1>
-    <p style="color:#999;margin-top:10px;">建设中 — 每日日报即将上线</p>
-    <a href="../index.html" style="color:#2d6a4f;text-decoration:none;font-size:0.85em;">← 返回总站</a>
+    <div class="sub">Bio · Longevity · Health</div>
+    <p class="desc">
+      每日精选抗衰老研究、基因治疗、生物技术、健康科普<br>
+      衰老 · 疾病 · 治愈 · 长寿，5 分钟跟上前沿
+    </p>
+    <a href="../index.html" style="display:inline-block;margin-top:14px;font-size:0.75em;color:var(--text-muted);text-decoration:none;">← 返回总站</a>
   </div>
+
+  <div id="latest-banner" class="latest-banner">
+    <strong>最新一期：</strong><span id="latest-text">暂无</span>
+  </div>
+
+  <div id="archive-grid" class="archive-grid"></div>
+  <div id="pagination" class="pagination"></div>
+
+  <div class="footer">
+    <img src="../assets/images/大黄蜂-点头.gif" alt="" class="footer-img">
+    <div class="footer-logo">Bio & Health Daily</div>
+    <p>
+      每日精选 · 值得关注 | 由 Hermes Agent 自动化生成
+    </p>
+  </div>
+
 </div>
+
+<script>
+(function() {
+  var ARCHIVE_DATA = [];
+
+  var PAGE_SIZE = 12;
+  var currentPage = 0;
+
+  function getWeekday(s) {
+    var w = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+    return w[new Date(s + 'T00:00:00').getDay()];
+  }
+  function renderGrid(page) {
+    var grid = document.getElementById('archive-grid');
+    var pagination = document.getElementById('pagination');
+    if (!grid) return;
+    var total = ARCHIVE_DATA.length;
+    var totalPages = Math.ceil(total / PAGE_SIZE) || 1;
+    if (page >= totalPages) page = totalPages - 1;
+    if (page < 0) page = 0;
+    currentPage = page;
+    var start = page * PAGE_SIZE;
+    var end = Math.min(start + PAGE_SIZE, total);
+    var items = ARCHIVE_DATA.slice(start, end);
+    if (items.length === 0) {
+      grid.innerHTML = '<p style="text-align:center;padding:60px 40px;color:var(--text-muted);line-height:2;">暂无存档记录<br><span style="font-size:0.85em;">日报将从明日 12:30 开始自动推送</span></p>';
+      pagination.innerHTML = '';
+      return;
+    }
+    var html = '';
+    for (var i = 0; i < items.length; i++) {
+      var it = items[i];
+      var wd = it.weekday || getWeekday(it.date);
+      var kw = it.keywords || '';
+      html += '<a class="archive-card" href="daily/' + it.date + '.html">' +
+        '<div class="card-date">' + it.date.replace(/-/g, '/') + '</div>' +
+        '<div class="card-wd">' + wd + '</div>' +
+        (kw ? '<div class="card-kw">' + kw + '</div>' : '') +
+        '</a>';
+    }
+    grid.innerHTML = html;
+    var ph = '';
+    ph += '<button ' + (page === 0 ? 'disabled' : '') + ' onclick="window._goPage(' + (page - 1) + ')">‹ 上一页</button>';
+    for (var p = 0; p < totalPages; p++) {
+      ph += '<button class="' + (p === page ? 'active' : '') + '" onclick="window._goPage(' + p + ')">' + (p + 1) + '</button>';
+    }
+    ph += '<button ' + (page >= totalPages - 1 ? 'disabled' : '') + ' onclick="window._goPage(' + (page + 1) + ')">下一页 ›</button>';
+    pagination.innerHTML = ph;
+  }
+  window._goPage = function(page) {
+    renderGrid(page);
+    window.scrollTo({ top: document.getElementById('archive-grid').offsetTop - 60, behavior: 'smooth' });
+  };
+  function init() {
+    if (ARCHIVE_DATA.length > 0) {
+      var latest = ARCHIVE_DATA[0];
+      var txt = document.getElementById('latest-text');
+      if (txt) {
+        txt.textContent = latest.date + ' (' + (latest.weekday || getWeekday(latest.date)) + ')' +
+          (latest.keywords ? ' - ' + latest.keywords : '');
+      }
+    }
+    renderGrid(0);
+  }
+  init();
+})();
+</script>
 </body>
 </html>
