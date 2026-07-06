@@ -1,10 +1,10 @@
-# GameDev & AI Daily Express
+# Daily Game Dev News
 
 > 游戏开发 · 游戏圈 · AI圈发展 — 每日精选速递
 
 每日自动搜索三大领域的最新动态，生成 HTML 日报推送至 GitHub Pages 和微信。
 
-**在线阅读**：https://jason-gao.github.io/gamedev-ai-daily/
+**在线阅读**：https://jason-gao.github.io/daily-game-dev-news/
 
 ## 内容板块
 

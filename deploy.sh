@@ -118,4 +118,4 @@ else
 fi
 
 echo ""
-echo "✅ 部署完成！访问 https://jason-gao.github.io/gamedev-ai-daily/ 查看更新"
+echo "✅ 部署完成！访问 https://jason-gao.github.io/daily-game-dev-news/ 查看更新"
