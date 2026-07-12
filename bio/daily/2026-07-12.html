@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生物 & 永生 & 健康 — 2026-07-12</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+:root {
+  --accent-green: #2d6a4f;
+  --accent-teal: #52b788;
+  --accent-mint: #95d5b2;
+  --bg: #f5f5f0;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --text-soft: #555;
+  --text-muted: #999;
+  --border: #e8e8e3;
+  --radius: 12px;
+  --shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+body {
+  background: var(--bg);
+  font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.header-avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%; object-fit: cover;
+  flex-shrink: 0;
+}
+.header-text { flex: 1; }
+.header-text h1 {
+  font-size: 1.5em; font-weight: 700;
+  letter-spacing: -0.3px; margin: 0;
+}
+.header-text .sub {
+  font-size: 0.75em; color: var(--text-muted);
+  letter-spacing: 2px; margin-top: 2px;
+}
+.header-tags {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.header-tags span {
+  font-size: 0.65em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.edition-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 0.75em;
+  color: var(--text-soft);
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.5px;
+}
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.keywords span {
+  background: #e8f5e9;
+  color: var(--accent-green);
+  font-size: 0.7em;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.headline-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: #eee;
+}
+.headline h2 {
+  font-size: 1.3em;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+.headline p {
+  font-size: 0.85em;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+.headline .src {
+  font-size: 0.7em;
+  color: var(--text-muted);
+}
+.section { padding: 24px 0; border-bottom: 1px solid var(--border); }
+.section:last-of-type { border-bottom: none; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.icon-img {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.section-header h3 {
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+.section-header .hint {
+  font-size: 0.65em;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-left: auto;
+}
+.news-item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0ed;
+}
+.news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.news-item .tag {
+  font-size: 0.65em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 4px;
+}
+.news-item .title {
+  font-weight: 600;
+  font-size: 0.9em;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.news-item .title a { color: var(--text); text-decoration: none; }
+.news-item .title a:hover { color: var(--accent-green); }
+.news-item .summary {
+  font-size: 0.8em;
+  color: var(--text-soft);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+.news-item .meta {
+  font-size: 0.7em;
+  color: var(--text-muted);
+  display: flex;
+  gap: 12px;
+}
+.news-item .meta a { color: var(--accent-teal); text-decoration: none; }
+.news-item .meta a:hover { text-decoration: underline; }
+.speed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+.speed-item {
+  background: #f9f9f5;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.72em;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+.sources {
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+}
+.sources h3 {
+  font-size: 0.85em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.sources ol {
+  font-size: 0.75em;
+  color: var(--text-soft);
+  padding-left: 18px;
+}
+.sources ol li { margin-bottom: 4px; }
+.sources ol li a { color: var(--accent-teal); text-decoration: none; }
+.sources ol li a:hover { text-decoration: underline; }
+.footer {
+  text-align: center;
+  padding: 24px 0;
+}
+.footer-img {
+  width: 40px; height: 40px;
+  border-radius: 50%; object-fit: cover;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+.footer-logo {
+  font-size: 0.75em;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.footer p {
+  font-size: 0.7em;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.footer a { color: var(--text-muted); text-decoration: none; }
+.footer a:hover { color: var(--accent-green); }
+a { color: var(--accent-teal); }
+@media (max-width: 480px) {
+  .container { padding: 20px 14px; }
+  .header { flex-wrap: wrap; }
+  .speed-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <img src="../../assets/images/初音未来-可爱.avif" alt="" class="header-avatar">
+    <div class="header-text">
+      <a href="../index.html" style="color:inherit;text-decoration:none;"><h1>生物 & 永生 & 健康</h1></a>
+      <div class="sub">Bio · Longevity · Health</div>
+    </div>
+    <div class="header-tags">
+      <span style="background:var(--accent-green);color:#fff;">抗衰老</span>
+      <span style="background:var(--accent-teal);color:#fff;">基因</span>
+      <span style="background:var(--accent-mint);color:#1b4332;">健康</span>
+    </div>
+  </div>
+
+  <div class="edition-bar">
+    <span class="date">2026年7月12日 星期日</span>
+    <span>第 7 期</span>
+  </div>
+
+  <div class="keywords">
+    <span>长寿大会</span>
+    <span>间歇禁食</span>
+    <span>β-葡聚糖</span>
+    <span>ORFeome</span>
+    <span>维生素A</span>
+    <span>心脏-脑轴</span>
+  </div>
+
+  <!-- Headline -->
+  <div class="headline">
+    <img src="../../assets/images/初音未来-盯着你.avif" alt="" class="headline-img">
+    <h2>哈佛大学举办全球最大长寿生物技术大会：Big Pharma 全面入场，GLP-1 开启抗衰老新时代</h2>
+    <p>第13届 Aging Research & Drug Discovery (ARDD) 年会——全球最大的长寿生物技术会议——将于2026年10月1-3日在哈佛大学 David Rubenstein Treehouse 举行。大会首次移师波士顿——全球生物医学创新核心——标志着衰老研究从实验室概念全面迈向主流医学。继 ARDD 2025 哥本哈根大会后，Eli Lilly、Novo Nordisk 等顶级药企已公开讨论 GLP-1 受体激动剂的深远长寿潜力。今年会议设置纤维化、免疫学、中枢神经、心代谢、抗肌肉萎缩、细胞再生等专题日程，推动衰老科学进入临床转化和产业增长快车道。</p>
+    <div class="src">来源：<a href="https://www.news-medical.net/news/20260711/Harvard-University-hosts-the-worlds-largest-conference-dedicated-to-longevity-biotechnology.aspx">News-Medical — 哈佛长寿大会 ARDD 2026</a></div>
+  </div>
+
+  <!-- Section: 抗衰老前沿 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-可爱.avif" alt="" class="icon-img">
+      <h3>抗衰老前沿</h3>
+      <span class="hint" style="color:var(--accent-green);">禁食 · 免疫 · 认知</span>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-green);">体重管理</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260701015247.htm">间歇性禁食比卡路里计数更容易坚持：同样减重效果，更高生活质量</a></div>
+      <div class="summary">阿德莱德大学新研究发现，对于反复减重又反弹的人群，间歇性禁食比传统卡路里计算更容易长期维持。研究比较了两种方法在减重效果、饮食习惯、情绪、睡眠和生活质量方面的影响，发现两者减重效果相当，但间歇性禁食组不需要持续监控进食量、不需要刻意避免暴食或计算卡路里就能达到同样效果。禁食组报告了更高的生活满意度和更低的饮食心理负担，为体重管理提供了一种更可持续的行为策略。</div>
+      <div class="meta"><span>2026-07-01</span><a href="https://www.sciencedaily.com/releases/2026/07/260701015247.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-teal);">免疫营养</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260709/Yeast-food-supplement-helps-immune-cells-fight-cancer-more-effectively.aspx">酵母食品补充剂首次证明可增强免疫细胞抗癌能力：β-葡聚糖的骨髓重编程效应</a></div>
+      <div class="summary">都柏林三一学院（TCD）和都柏林大学学院（UCD）首次证明，一种由酵母制成的食品补充剂可帮助身体生成更强的抗癌免疫细胞。酵母 β-葡聚糖补充剂能够"重编程"骨髓中的早期免疫细胞，产生持久的增强型抗肿瘤免疫反应。在小鼠模型中，饮食中添加 β-葡聚糖 4-12 周后，肠道、皮肤和乳腺癌的免疫攻击力显著增强。该补充剂还能逆转肥胖引起的免疫功能障碍，且保护效果在减重后持续存在。</div>
+      <div class="meta"><span>2026-07-09</span><a href="https://www.news-medical.net/news/20260709/Yeast-food-supplement-helps-immune-cells-fight-cancer-more-effectively.aspx">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-mint);">脑健康</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260701/Real-time-monitoring-shows-how-daily-habits-influence-cognitive-performance-in-older-adults.aspx">智能手表实时监测揭示：日常习惯如何直接影响老年人认知表现</a></div>
+      <div class="summary">UC Davis Health 发表于《Neuropsychology》的研究利用智能手表在真实生活场景中实时评估老年人认知能力。研究发现，老年人对自己当下思维能力的自我评估与实际认知测试表现高度一致。研究追踪了日常情境下的实时情绪和认知波动，发现：日常习惯——如睡眠质量、体力活动、社交互动——对瞬间认知表现有直接且可测量的影响。这一发现可能比标准认知测试更早检测到认知下降和阿尔茨海默风险，为早期干预开辟了新窗口。</div>
+      <div class="meta"><span>2026-07-01</span><a href="https://www.news-medical.net/news/20260701/Real-time-monitoring-shows-how-daily-habits-influence-cognitive-performance-in-older-adults.aspx">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">蓝色LED光帮助化学家在更少步骤中构建复杂药物分子：布法罗大学在《Science》发表研究发现，用商业蓝光LED和基础有机化学原料即可大幅加速三维药物分子合成，有望降低新药研发成本</div>
+      <div class="speed-item">膳食纤维混合物有效缓解成人慢性便秘：《Food Science & Nutrition》RCT 证实，多种来源的膳食纤维组合可显著改善肠蠕动频率、大便稠度和排便舒适度，持续改善比例高达 70%</div>
+    </div>
+  </div>
+
+  <!-- Section: 基因 & 细胞治疗 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-贪吃.avif" alt="" class="icon-img">
+      <h3>基因 & 细胞治疗</h3>
+      <span class="hint" style="color:var(--accent-teal);">病毒组学 · 肠道免疫 · 视觉</span>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-green);">病毒组学</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260711/New-viral-library-helps-scientists-study-thousands-of-proteins.aspx">哈佛开发全球最大病毒 ORFeome 文库：一次实验研究数千种蛋白</a></div>
+      <div class="summary">哈佛医学院 Stephen Elledge 团队在《Cell》发表一项重磅工具——全球最大的病毒 ORFeome 文库。该文库包含数千种病毒蛋白的编码序列，可在单次实验中同时分析大量病毒蛋白如何操纵人类细胞。此前研究人员一次只能研究少数病毒蛋白，而这项新工具将规模扩大了数个数量级。Elledge 教授表示："该文库以前所未有的规模揭示了病毒如何操纵人类细胞。"这一工具将加速抗病毒疗法和疫苗开发，并帮助人类在未来疫情中更快做出反应。文库设计还降低了使用门槛，非病毒学专业的研究者也能使用。</div>
+      <div class="meta"><span>2026-07-11</span><a href="https://www.news-medical.net/news/20260711/New-viral-library-helps-scientists-study-thousands-of-proteins.aspx">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-teal);">肠道免疫</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260707/Researchers-identify-key-protein-balancing-gut-immunity-and-inflammation.aspx">关键蛋白 BHLHE40 发现：同时协调肠道抗病原体免疫和免疫耐受</a></div>
+      <div class="summary">Weill Cornell Medicine 在《Immunity》发表研究，揭示了一个名为 BHLHE40 的蛋白质如何在肠道免疫细胞中扮演双重角色。该蛋白同时协调肠道对病原体的免疫攻击和对有益菌群的免疫耐受——前者通过 TL1A 信号通路激活免疫反应，后者防止不必要的炎症。研究发现 TL1A 在 IBD（炎症性肠病）患者肠道组织中水平升高，与多种炎症性疾病遗传关联。BHLHE40 作为 TL1A 通路的主要"主开关"，为更精准地靶向这一通路治疗 IBD 和克罗恩病提供了新策略。</div>
+      <div class="meta"><span>2026-07-07</span><a href="https://www.news-medical.net/news/20260707/Researchers-identify-key-protein-balancing-gut-immunity-and-inflammation.aspx">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-mint);">视觉科学</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260708022214.htm">维生素A新发现改写人类视觉形成认知——可指导黄斑变性治疗</a></div>
+      <div class="summary">约翰霍普金斯大学在《PNAS》发表研究，揭示了人类出生前如何形成敏锐的中心视力：一种由维生素A衍生的分子与甲状腺激素在视网膜中精确时空调控。这一发现挑战了过去数十年的经典解释，揭示了视网膜中心凹——负责最清晰视觉的区域——的形成机制。研究者利用实验室培养的视网膜类器官进行实验，发现这一过程对于理解黄斑变性（老年致盲首要原因）至关重要。"这是理解视网膜中心运作的关键一步，"研究负责人 Johnston 表示，"通过更好地理解这一区域并开发模拟其功能的类器官，我们有望最终培育并移植这些组织以恢复视力。"</div>
+      <div class="meta"><span>2026-07-08</span><a href="https://www.sciencedaily.com/releases/2026/07/260708022214.htm">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">175 年谜题破解：Weill Cornell 在《Nature Communications》揭示麻醉药七氟烷如何结合钠离子通道并使其失活，首次从原子层面解释吸入麻醉剂诱导意识丧失的分子机制</div>
+      <div class="speed-item">细菌天然抗癌药制造密码破解！《Nature Communications》研究揭示细菌如何协同酶组装 Romidepsin（FDA 批准血液癌药）及其类似物，为工程化生产下一代抗癌天然药物铺平道路</div>
+    </div>
+  </div>
+
+  <!-- Section: 健康 & 长寿生活 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-晚安.avif" alt="" class="icon-img">
+      <h3>健康 & 长寿生活</h3>
+      <span class="hint" style="color:var(--accent-mint);">心脑 · 肿瘤 · 微生态</span>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-green);">心脑轴</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260706/Study-explores-the-relationship-between-heart-issues-and-cognitive-function.aspx">轻微心功能障碍即可预测阿尔茨海默相关脑组织退化</a></div>
+      <div class="summary">马克斯·普朗克研究所团队在《JNeurosci》发表重要研究，追踪 73 名莱比锡心脏研究患者 3.5 年，发现即使未达到临床心衰诊断标准的轻微心脏功能障碍，也可预测大脑区域中的微观组织退化——这些区域与阿尔茨海默病密切相关。这种微观组织损伤解释了轻微心功能障碍与长期记忆表现下降之间的联系。研究指出，追踪脑微观结构完整性为心脏病患者的神经风险分层提供了新途径，目前的影像学检查无法检测到这些微观变化。团队计划结合特定脑生物标记物，最终绘制心脏相关脑变化与早期痴呆机制的交叉路径。</div>
+      <div class="meta"><span>2026-07-06</span><a href="https://www.news-medical.net/news/20260706/Study-explores-the-relationship-between-heart-issues-and-cognitive-function.aspx">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-teal);">整合肿瘤学</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260711/Insurance-supported-integrative oncology-symptom-management-program-benefits-cancer-patients.aspx">保险支持的综合肿瘤症状管理项目显著改善癌症患者生活质量</a></div>
+      <div class="summary">University Hospitals Connor Whole Health 发表16个月临床评估结果：保险支持的综合肿瘤症状管理项目为 291 名患者提供了 1,924 次整合治疗，在疼痛、压力、焦虑、抑郁、恶心和疲劳等癌症相关症状方面取得了临床意义的显著改善。该项目采用混合模式，将保险覆盖的医生诊疗和按摩治疗与低成本团体针灸相结合。整合肿瘤学将最佳常规癌症治疗与循证支持疗法（如针灸）相结合，证明将症状管理纳入综合癌症护理可有效减轻患者负担并提高生活质量。</div>
+      <div class="meta"><span>2026-07-11</span><a href="https://www.news-medical.net/news/20260711/Insurance-supported-integrative oncology-symptom-management-program-benefits-cancer-patients.aspx">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-mint);">肠道微生态</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260707054114.htm">肠道寄生虫需要膳食纤维才能发挥抗炎功效——"好寄生虫"的生存密码</a></div>
+      <div class="summary">捷克科学院在《Nature Communications》发表出人意料的研究：肠道蠕虫（寄生虫）只有在摄入足够膳食纤维时才能发挥抗炎作用。研究表明，当宿主的膳食纤维缺乏时，这些肠道蠕虫会进入一种类似冬眠的状态，丧失提供抗炎益处的能力。研究人员指出：在工业化国家，由于卫生条件改善，肠道寄生虫已远不如从前常见，而同一时期自身免疫性疾病和炎症性肠病的发病率大幅上升。这一发现揭示了膳食纤维、肠道微生物和寄生虫之间的三角关系，为理解"卫生假说"提供了全新视角，也提示我们在追求肠道健康时需要更系统地看待饮食与微生物的关系。</div>
+      <div class="meta"><span>2026-07-07</span><a href="https://www.sciencedaily.com/releases/2026/07/260707054114.htm">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">美国胃肠病协会（AGA）推出 AI 虚拟助手 Nigel——专为胃肠病和肝病设计，可在数秒内提供基于 AGA 临床指南的循证应答，帮助医生在诊疗点快速做出决策</div>
+      <div class="speed-item">Keck Medicine 研究警示：每日大量吸食大麻者患头颈癌风险是非使用者的 3.5-5 倍，包括口腔、咽喉、喉部和唾液腺癌——随着大麻合法化趋势，这一发现值得高度警惕</div>
+    </div>
+  </div>
+
+  <!-- Sources -->
+  <div class="sources">
+    <h3>信息来源</h3>
+    <ol>
+      <li><a href="https://www.news-medical.net/news/20260711/Harvard-University-hosts-the-worlds-largest-conference-dedicated-to-longevity-biotechnology.aspx">News-Medical — 哈佛长寿大会 ARDD 2026</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260701015247.htm">ScienceDaily — 间歇性禁食 vs 卡路里计数</a></li>
+      <li><a href="https://www.news-medical.net/news/20260709/Yeast-food-supplement-helps-immune-cells-fight-cancer-more-effectively.aspx">News-Medical — 酵母β-葡聚糖增强免疫</a></li>
+      <li><a href="https://www.news-medical.net/news/20260701/Real-time-monitoring-shows-how-daily-habits-influence-cognitive-performance-in-older-adults.aspx">News-Medical — 智能手表监测认知</a></li>
+      <li><a href="https://www.news-medical.net/news/20260711/New-viral-library-helps-scientists-study-thousands-of-proteins.aspx">News-Medical — 病毒 ORFeome 文库</a></li>
+      <li><a href="https://www.news-medical.net/news/20260707/Researchers-identify-key-protein-balancing-gut-immunity-and-inflammation.aspx">News-Medical — BHLHE40 肠道免疫</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260708022214.htm">ScienceDaily — 维生素A视觉形成</a></li>
+      <li><a href="https://www.news-medical.net/news/20260706/Study-explores-the-relationship-between-heart-issues-and-cognitive-function.aspx">News-Medical — 心功能障碍与脑退化</a></li>
+      <li><a href="https://www.news-medical.net/news/20260711/Insurance-supported-integrative oncology-symptom-management-program-benefits-cancer-patients.aspx">News-Medical — 综合肿瘤症状管理</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260707054114.htm">ScienceDaily — 膳食纤维与肠道寄生虫抗炎</a></li>
+    </ol>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <img src="../../assets/images/大黄蜂-点头.gif" alt="" class="footer-img">
+    <div class="footer-logo">Bio & Health Daily</div>
+    <p>
+      每日精选 · 值得关注<br>
+      由 Hermes Agent 自动化生成<br>
+      返回 <a href="../index.html">首页存档</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
