@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生物 & 永生 & 健康 — 2026-07-14</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+:root {
+  --accent-green: #2d6a4f;
+  --accent-teal: #52b788;
+  --accent-mint: #95d5b2;
+  --bg: #f5f5f0;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --text-soft: #555;
+  --text-muted: #999;
+  --border: #e8e8e3;
+  --radius: 12px;
+  --shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+body {
+  background: var(--bg);
+  font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.header-avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%; object-fit: cover;
+  flex-shrink: 0;
+}
+.header-text { flex: 1; }
+.header-text h1 {
+  font-size: 1.5em; font-weight: 700;
+  letter-spacing: -0.3px; margin: 0;
+}
+.header-text .sub {
+  font-size: 0.75em; color: var(--text-muted);
+  letter-spacing: 2px; margin-top: 2px;
+}
+.header-tags {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.header-tags span {
+  font-size: 0.65em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.edition-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 0.75em;
+  color: var(--text-soft);
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.5px;
+}
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.keywords span {
+  background: #e8f5e9;
+  color: var(--accent-green);
+  font-size: 0.7em;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.headline-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: #eee;
+}
+.headline h2 {
+  font-size: 1.3em;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+.headline p {
+  font-size: 0.85em;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+.headline .src {
+  font-size: 0.7em;
+  color: var(--text-muted);
+}
+.section { padding: 24px 0; border-bottom: 1px solid var(--border); }
+.section:last-of-type { border-bottom: none; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.icon-img {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.section-header h3 {
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+.section-header .hint {
+  font-size: 0.65em;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-left: auto;
+}
+.news-item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0ed;
+}
+.news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.news-item .tag {
+  font-size: 0.65em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 4px;
+}
+.news-item .title {
+  font-weight: 600;
+  font-size: 0.9em;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.news-item .title a { color: var(--text); text-decoration: none; }
+.news-item .title a:hover { color: var(--accent-green); }
+.news-item .summary {
+  font-size: 0.8em;
+  color: var(--text-soft);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+.news-item .meta {
+  font-size: 0.7em;
+  color: var(--text-muted);
+  display: flex;
+  gap: 12px;
+}
+.news-item .meta a { color: var(--accent-teal); text-decoration: none; }
+.news-item .meta a:hover { text-decoration: underline; }
+.speed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+.speed-item {
+  background: #f9f9f5;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.72em;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+.sources {
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+}
+.sources h3 {
+  font-size: 0.85em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.sources ol {
+  font-size: 0.75em;
+  color: var(--text-soft);
+  padding-left: 18px;
+}
+.sources ol li { margin-bottom: 4px; }
+.sources ol li a { color: var(--accent-teal); text-decoration: none; }
+.sources ol li a:hover { text-decoration: underline; }
+.footer {
+  text-align: center;
+  padding: 24px 0;
+}
+.footer-img {
+  width: 40px; height: 40px;
+  border-radius: 50%; object-fit: cover;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+.footer-logo {
+  font-size: 0.75em;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.footer p {
+  font-size: 0.7em;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.footer a { color: var(--text-muted); text-decoration: none; }
+.footer a:hover { color: var(--accent-green); }
+a { color: var(--accent-teal); }
+@media (max-width: 480px) {
+  .container { padding: 20px 14px; }
+  .header { flex-wrap: wrap; }
+  .speed-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <img src="../../assets/images/初音未来-可爱.avif" alt="" class="header-avatar">
+    <div class="header-text">
+      <a href="../index.html" style="color:inherit;text-decoration:none;"><h1>生物 & 永生 & 健康</h1></a>
+      <div class="sub">Bio · Longevity · Health</div>
+    </div>
+    <div class="header-tags">
+      <span style="background:var(--accent-green);color:#fff;">癌症</span>
+      <span style="background:var(--accent-teal);color:#fff;">mRNA</span>
+      <span style="background:var(--accent-mint);color:#1b4332;">睡眠</span>
+    </div>
+  </div>
+
+  <div class="edition-bar">
+    <span class="date">2026年7月14日 星期二</span>
+    <span>第 8 期</span>
+  </div>
+
+  <div class="keywords">
+    <span>前列腺癌</span>
+    <span>mRNA疫苗</span>
+    <span>睡眠不足</span>
+    <span>ZFP384</span>
+    <span>牙周病菌</span>
+    <span>硅芯片DNA</span>
+  </div>
+
+  <!-- Headline -->
+  <div class="headline">
+    <img src="../../assets/images/初音未来-盯着你.avif" alt="" class="headline-img">
+    <h2>纳米二氧化硅颗粒完全清除小鼠侵袭性前列腺癌——临床转化在望</h2>
+    <p>Weill Cornell Medicine 与康奈尔大学联合开发出一种靶向性二氧化硅纳米颗粒，可同时直接摧毁前列腺肿瘤并唤醒免疫系统。在侵袭性前列腺癌小鼠模型中，靶向颗粒实现了多次完全肿瘤消退。颗粒设计通过 E-selectin 配体靶向肿瘤血管，携带高浓度二氧化硅进入肿瘤微环境，诱导癌细胞自毁并释放抗原，进而激活全身抗肿瘤免疫。联合免疫检查点抑制剂后，治疗效果进一步放大。研究团队表示，该平台有望在非人灵长类验证后推进至人体临床试验，开启实体瘤治疗新范式。</p>
+    <div class="src">来源：<a href="https://www.sciencedaily.com/releases/2026/07/260708022158.htm">ScienceDaily — 二氧化硅纳米颗粒 vs 前列腺癌</a></div>
+  </div>
+
+  <!-- Section: 抗衰老前沿 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-可爱.avif" alt="" class="icon-img">
+      <h3>抗衰老前沿</h3>
+      <span class="hint" style="color:var(--accent-green);">睡眠 · 神经 · 超声</span>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-green);">睡眠健康</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260713000800.htm">每晚少睡 80 分钟，六周即可导致体重增加和久坐行为</a></div>
+      <div class="summary">哥伦比亚大学瓦格洛斯内外科学院研究发现，成年人连续六周每晚减少约 80 分钟睡眠后，平均增重一磅（约 0.45 kg），且日间活动时间显著减少。研究模拟了现代人常见的轻度睡眠剥夺情景——远未达到严重失眠程度。即便这种小幅但持续的睡眠减少，也在短期内对体重和活动水平产生了可测量的负面效应。研究警告，若此模式延续数月至数年，健康后果将显著放大，包括糖尿病和心脏病风险升高。该发现为睡眠作为体重管理基石提供了又一强力证据，也提醒人们在关注饮食和运动之外，不应忽视睡眠这条"被动"的健康防线。</div>
+      <div class="meta"><span>2026-07-13</span><a href="https://www.sciencedaily.com/releases/2026/07/260713000800.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-teal);">神经科学</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260710003535.htm">阿尔茨海默 tau 蛋白惊人新发现：长期记忆的形成离不开它</a></div>
+      <div class="summary">弗林德斯大学等机构在《Nature Communications》发表颠覆性发现：tau 蛋白虽因阿尔茨海默病而"臭名昭著"，但它同时也是形成长期记忆所必需的。研究发现，tau 蛋白在健康大脑中帮助组织存储记忆的神经元细胞群，将新经历转化为持久记忆。而异常的 tau 蛋白则会同时破坏新记忆的形成和已有记忆的提取——这解释了阿尔茨海默患者早期的记忆缺陷。这一发现揭示了 tau 蛋白的健康功能与病理功能之间的微妙平衡，为开发既能保留 tau 正常功能又能阻断其致病作用的靶向疗法提供了全新设计思路。</div>
+      <div class="meta"><span>2026-07-10</span><a href="https://www.sciencedaily.com/releases/2026/07/260710003535.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-mint);">再生医学</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260710003521.htm">低强度超声治疗有望在关节炎发生前阻止它——无需药物的免疫重编程</a></div>
+      <div class="summary">阿拉巴马大学亨茨维尔分校（UAH）发现，持续低强度超声可通过非侵入性方式改变免疫细胞行为，将伤后关节从慢性炎症轨道拉向组织修复方向。研究聚焦于巨噬细胞——关键的免疫调节细胞——发现超声能促使它们从促炎（M1）表型转向修复支持（M2）表型。这一药物无关策略为创伤后骨关节炎（最常见关节炎类型之一）提供了预防性干预手段。如果效果在临床中得到验证，关节损伤患者未来可能在急诊或康复阶段就接受超声治疗，以阻断数月后可能出现的关节炎进程。</div>
+      <div class="meta"><span>2026-07-10</span><a href="https://www.sciencedaily.com/releases/2026/07/260710003521.htm">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">阻断 ZFP384 蛋白可延长中风后大脑内源性修复窗口——合作研究团队发现该蛋白是限制脑修复的关键制动器，抑制后可为神经再生赢得宝贵时间（News-Medical, 2026-07-13）</div>
+      <div class="speed-item">血清素与二尖瓣疾病新关联：哥伦比亚大学发现 5-羟色胺转运体活性降低可能加速退行性二尖瓣反流患者的瓣膜损害（ScienceDaily, 2026-07-11）</div>
+    </div>
+  </div>
+
+  <!-- Section: 基因 & 细胞治疗 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-贪吃.avif" alt="" class="icon-img">
+      <h3>基因 & 细胞治疗</h3>
+      <span class="hint" style="color:var(--accent-teal);">mRNA · 免疫 · 脑修复</span>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-green);">mRNA疫苗</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260708022212.htm">隐藏的免疫后备系统被发现——或能大幅增强 mRNA 癌症疫苗效力</a></div>
+      <div class="summary">华盛顿大学医学院在 mRNA 癌症疫苗研究中取得突破性发现：该类疫苗不仅能激活传统的树突状细胞抗原呈递通路，还能招募一种此前被忽视的免疫细胞类型来发起强大的抗肿瘤攻击。这一发现推翻了长期以来的核心假设——即 mRNA 疫苗的抗癌作用完全依赖于树突状细胞。研究团队在小鼠模型中证实，当树突状细胞通路受损时，这种后备免疫机制仍能独立驱动有效的抗癌反应，这意味着当前基于树突状细胞设计的 mRNA 疫苗策略可能低估了其实际潜力。该发现有望指导未来癌症疫苗的优化设计，并帮助根据患者免疫特征进行个性化精准匹配。当前黑色素瘤、小细胞肺癌、膀胱癌等多种癌症的 mRNA 疫苗已进入临床试验阶段。</div>
+      <div class="meta"><span>2026-07-08</span><a href="https://www.sciencedaily.com/releases/2026/07/260708022212.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-teal);">纳米医学</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260708022158.htm">二氧化硅纳米颗粒：直接摧毁肿瘤 + 激活免疫——前列腺癌完全消退</a></div>
+      <div class="summary">Weill Cornell Medicine 与康奈尔大学 Duffield 工程学院合作的临床前研究展示了二氧化硅纳米颗粒的强大抗癌能力。这些仅纳米尺度的二氧化硅颗粒经 E-selectin 靶向修饰后，选择性积聚于肿瘤血管，释放高浓度二氧化硅触发癌细胞凋亡，同时释放肿瘤抗原激活全身性抗肿瘤免疫。在侵袭性前列腺癌小鼠模型中，单用颗粒即实现部分肿瘤消退，与免疫检查点抑制剂联用后实现了多次完全肿瘤消退（CR）。研究通讯作者表示："这种平台技术不仅直接杀死肿瘤，还能教育免疫系统识别并追击肿瘤。"团队正推进非人灵长类验证，目标是进入人体临床试验。这一"纳米免疫"双功能策略为实体瘤治疗开辟了新思路。</div>
+      <div class="meta"><span>2026-07-08</span><a href="https://www.sciencedaily.com/releases/2026/07/260708022158.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-mint);">神经修复</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260713/Blocking-ZFP384-protein-extends-brain-repair-window-after-stroke.aspx">阻断 ZFP384 蛋白可延长中风后脑修复时间窗</a></div>
+      <div class="summary">一项合作研究发表于《Nature》子刊，发现 ZFP384 蛋白是限制中风后大脑内源性修复能力的"分子制动器"。正常情况下，中风后大脑会启动一系列内源性修复程序，但 ZFP384 的表达会迅速关闭这些修复活动。通过药物或基因手段抑制 ZFP384 活性，研究团队成功将修复窗口延长了数天，使神经再生和功能恢复获得了宝贵的时间。这一发现对缺血性中风的治疗具有重要意义——当前临床黄金窗口仅为发病后数小时，而 ZFP384 靶向策略可将治疗窗口扩展至数天，极大地增加了患者接受有效治疗的机会。研究正在评估小分子抑制剂作为候选药物的可行性。</div>
+      <div class="meta"><span>2026-07-13</span><a href="https://www.news-medical.net/news/20260713/Blocking-ZFP384-protein-extends-brain-repair-window-after-stroke.aspx">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">哈佛团队将硅芯片变身 DNA 合成仪——用电和水基酶在芯片上同时合成 64 条 DNA 序列，为便携式 DNA 制造和 DNA 数据存储铺路（ScienceDaily, 2026-07-08）</div>
+      <div class="speed-item">细菌天然抗癌药制造密码破解！科学家终于揭示细菌如何协同酶组装多种版本的抗癌药物（Romidepsin 类似物），为工程化生产下一代抗癌天然药开辟道路（ScienceDaily, 2026-07-01）</div>
+    </div>
+  </div>
+
+  <!-- Section: 健康 & 长寿生活 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-晚安.avif" alt="" class="icon-img">
+      <h3>健康 & 长寿生活</h3>
+      <span class="hint" style="color:var(--accent-mint);">牙周 · 药物 · 认知</span>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-green);">心脏健康</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260713000751.htm">牙周病菌被发现可促进心脏瓣膜钙化——牙龈健康关乎心脏</a></div>
+      <div class="summary">在美国心脏协会基础心血管科学年会（波士顿，7月13-16日）上公布的新研究揭示：导致牙周病的细菌可能不仅损害牙齿，还可促进主动脉瓣钙化，导致钙化性主动脉瓣狭窄（CAVS）——一种常见且危及生命的心脏瓣膜疾病。研究发现，牙周病菌可通过触发炎症反应和促进钙盐沉积的方式加速瓣膜病变。这是首次将口腔微生物与主动脉瓣钙化直接关联的前瞻性研究，提示口腔健康管理可能是降低瓣膜性心脏病风险的新途径。CAVS 目前除手术换瓣外无有效药物干预手段，早期预防尤为重要。</div>
+      <div class="meta"><span>2026-07-13</span><a href="https://www.sciencedaily.com/releases/2026/07/260713000751.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-teal);">药物安全</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260708022204.htm">Ozempic 和 Wegovy 的致命错误——毒控中心接到海量误用报告</a></div>
+      <div class="summary">随着 semaglutide（Ozempic 和 Wegovy）在 2021 年获 FDA 批准用于慢性体重管理后，全美毒控中心的咨询电话量出现了戏剧性飙升。UT San Antonio 的研究发现，这一激增与 FDA 扩大批准的时间线高度相关，但原因并非故意滥用或过量——而是用药错误。最典型的错误包括：混淆每周一次和每日一次的剂量方案（以为每天都要打）、不理解起始剂量和逐步递增方案（直接使用维持剂量）。研究强调，这些错误完全可以通过更好的患者教育和清晰的用药指示来避免。研究团队呼吁处方医生和药剂师在首次开药时提供更直观的剂量教育。</div>
+      <div class="meta"><span>2026-07-08</span><a href="https://www.sciencedaily.com/releases/2026/07/260708022204.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-mint);">神经系统</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260713/Study-reveals-substantial-rise-in-Latin-American-dementia-rates.aspx">拉丁美洲痴呆症患病率二十年间显著上升——全球警示信号</a></div>
+      <div class="summary">华盛顿大学圣路易斯分校与英国纽卡斯尔大学联合研究显示，过去二十年中，拉丁美洲和加勒比地区多个国家的痴呆症患病率显著上升。研究覆盖了多个中低收入国家的大型社区队列，发现这一趋势在调整年龄结构后仍然显著，提示生活方式和健康环境因素在其中发挥了重要作用。拉丁美洲的高血压、糖尿病和肥胖率上升可能与认知衰退加速相关。这一发现不仅对该地区的公共卫生政策具有指导意义，也为全球其他发展中地区的痴呆症防控提供了前瞻性警示——随着人口老龄化和非传染性疾病负担加重，痴呆症将成为全球中低收入国家日益沉重的健康负担。</div>
+      <div class="meta"><span>2026-07-13</span><a href="https://www.news-medical.net/news/20260713/Study-reveals-substantial-rise-in-Latin-American-dementia-rates.aspx">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">加拿大蜱传疾病 Anaplasmosis 上升——可引发心肌炎。继 Lyme 病之后，该病已成为加拿大第二大蜱传疾病，值得户外活动者警惕（News-Medical, 2026-07-13）</div>
+      <div class="speed-item">重度大麻吸食者患头颈癌风险是非使用者的 3.5-5 倍——USC Keck Medicine 警示随着大麻合法化，相关癌症风险正在被忽视（ScienceDaily, 2026-07-08）</div>
+    </div>
+  </div>
+
+  <!-- Sources -->
+  <div class="sources">
+    <h3>信息来源</h3>
+    <ol>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260708022158.htm">ScienceDaily — 二氧化硅纳米颗粒 vs 前列腺癌</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260708022212.htm">ScienceDaily — mRNA 癌症疫苗免疫后备系统</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260713000800.htm">ScienceDaily — 睡眠不足与体重增加</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260710003535.htm">ScienceDaily — Tau 蛋白与记忆形成</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260710003521.htm">ScienceDaily — 超声治疗预防关节炎</a></li>
+      <li><a href="https://www.news-medical.net/news/20260713/Blocking-ZFP384-protein-extends-brain-repair-window-after-stroke.aspx">News-Medical — ZFP384 脑修复窗口</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260713000751.htm">ScienceDaily — 牙周病菌与心脏瓣膜钙化</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260708022204.htm">ScienceDaily — Ozempic/Wegovy 用药错误</a></li>
+      <li><a href="https://www.news-medical.net/news/20260713/Study-reveals-substantial-rise-in-Latin-American-dementia-rates.aspx">News-Medical — 拉丁美洲痴呆症上升</a></li>
+      <li><a href="https://www.news-medical.net/news/20260713/Rising-tick-borne-disease-in-Canada-can-trigger-heart-inflammation.aspx">News-Medical — 蜱传 Anaplasmosis 心肌炎</a></li>
+    </ol>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <img src="../../assets/images/大黄蜂-点头.gif" alt="" class="footer-img">
+    <div class="footer-logo">Bio & Health Daily</div>
+    <p>
+      每日精选 · 值得关注<br>
+      由 Hermes Agent 自动化生成<br>
+      返回 <a href="../index.html">首页存档</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
