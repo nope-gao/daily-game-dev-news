@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生物 & 永生 & 健康 — 2026-07-15</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+:root {
+  --accent-green: #2d6a4f;
+  --accent-teal: #52b788;
+  --accent-mint: #95d5b2;
+  --bg: #f5f5f0;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --text-soft: #555;
+  --text-muted: #999;
+  --border: #e8e8e3;
+  --radius: 12px;
+  --shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+body {
+  background: var(--bg);
+  font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.header-avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%; object-fit: cover;
+  flex-shrink: 0;
+}
+.header-text { flex: 1; }
+.header-text h1 {
+  font-size: 1.5em; font-weight: 700;
+  letter-spacing: -0.3px; margin: 0;
+}
+.header-text .sub {
+  font-size: 0.75em; color: var(--text-muted);
+  letter-spacing: 2px; margin-top: 2px;
+}
+.header-tags {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.header-tags span {
+  font-size: 0.65em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.edition-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 0.75em;
+  color: var(--text-soft);
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.5px;
+}
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.keywords span {
+  background: #e8f5e9;
+  color: var(--accent-green);
+  font-size: 0.7em;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.headline-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: #eee;
+}
+.headline h2 {
+  font-size: 1.3em;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+.headline p {
+  font-size: 0.85em;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+.headline .src {
+  font-size: 0.7em;
+  color: var(--text-muted);
+}
+.section { padding: 24px 0; border-bottom: 1px solid var(--border); }
+.section:last-of-type { border-bottom: none; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.icon-img {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.section-header h3 {
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+.section-header .hint {
+  font-size: 0.65em;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-left: auto;
+}
+.news-item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0ed;
+}
+.news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.news-item .tag {
+  font-size: 0.65em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 4px;
+}
+.news-item .title {
+  font-weight: 600;
+  font-size: 0.9em;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.news-item .title a { color: var(--text); text-decoration: none; }
+.news-item .title a:hover { color: var(--accent-green); }
+.news-item .summary {
+  font-size: 0.8em;
+  color: var(--text-soft);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+.news-item .meta {
+  font-size: 0.7em;
+  color: var(--text-muted);
+  display: flex;
+  gap: 12px;
+}
+.news-item .meta a { color: var(--accent-teal); text-decoration: none; }
+.news-item .meta a:hover { text-decoration: underline; }
+.speed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+.speed-item {
+  background: #f9f9f5;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.72em;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+.sources {
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+}
+.sources h3 {
+  font-size: 0.85em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.sources ol {
+  font-size: 0.75em;
+  color: var(--text-soft);
+  padding-left: 18px;
+}
+.sources ol li { margin-bottom: 4px; }
+.sources ol li a { color: var(--accent-teal); text-decoration: none; }
+.sources ol li a:hover { text-decoration: underline; }
+.footer {
+  text-align: center;
+  padding: 24px 0;
+}
+.footer-img {
+  width: 40px; height: 40px;
+  border-radius: 50%; object-fit: cover;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+.footer-logo {
+  font-size: 0.75em;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.footer p {
+  font-size: 0.7em;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.footer a { color: var(--text-muted); text-decoration: none; }
+.footer a:hover { color: var(--accent-green); }
+a { color: var(--accent-teal); }
+@media (max-width: 480px) {
+  .container { padding: 20px 14px; }
+  .header { flex-wrap: wrap; }
+  .speed-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <img src="../../assets/images/初音未来-可爱.avif" alt="" class="header-avatar">
+    <div class="header-text">
+      <a href="../index.html" style="color:inherit;text-decoration:none;"><h1>生物 & 永生 & 健康</h1></a>
+      <div class="sub">Bio · Longevity · Health</div>
+    </div>
+    <div class="header-tags">
+      <span style="background:var(--accent-green);color:#fff;">衰老</span>
+      <span style="background:var(--accent-teal);color:#fff;">GLP-1</span>
+      <span style="background:var(--accent-mint);color:#1b4332;">表观遗传</span>
+    </div>
+  </div>
+
+  <div class="edition-bar">
+    <span class="date">2026年7月15日 星期三</span>
+    <span>第 9 期</span>
+  </div>
+
+  <div class="keywords">
+    <span>Semaglutide</span>
+    <span>表观遗传时钟</span>
+    <span>痴呆症</span>
+    <span>THC/CBD</span>
+    <span>脂肪肝</span>
+    <span>肠道疫苗</span>
+    <span>运动重塑心脏</span>
+  </div>
+
+  <!-- Headline -->
+  <div class="headline">
+    <img src="../../assets/images/初音未来-盯着你.avif" alt="" class="headline-img">
+    <h2>重磅突破：Semaglutide 首次被证实可延缓人类生物学衰老</h2>
+    <p>来自加州大学圣迭戈分校等机构的研究团队在《Nature Communications》发表了首个人类随机安慰剂对照证据：GLP-1 药物 semaglutide（Ozempic / Wegovy 活性成分）竟能显著减缓生物学衰老速度。研究招募了 108 名 HIV 感染伴脂肪萎缩的成人患者（HIV 患者因慢性炎症通常经历加速衰老），半数接受每周 semaglutide 注射、半数接受安慰剂。通过多组表观遗传时钟（DNA 甲基化标记）测量发现：semaglutide 组在多个与炎症、代谢、心脑肾健康相关的时钟上均显示衰老减缓，DunedinPACE 时钟显示衰老速度降低 9%，PCGrimAge 时钟显示与年龄相关疾病及全因死亡风险相关的生物学进程显著减慢。这一发现首次在人类临床试验中将 GLP-1 药物从"减肥降糖"提升到"抗衰老干预"的高度，为重新定义衰老干预药物提供了里程碑式证据。</p>
+    <div class="src">来源：<a href="https://www.sciencedaily.com/releases/2026/07/260713084907.htm">ScienceDaily — Ozempic May Slow Biological Aging</a></div>
+  </div>
+
+  <!-- Section: 抗衰老前沿 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-可爱.avif" alt="" class="icon-img">
+      <h3>抗衰老前沿</h3>
+      <span class="hint" style="color:var(--accent-green);">表观遗传 · 神经可塑性 · 心脏重塑</span>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-green);">抗衰老药物</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260713084907.htm">Semaglutide 首次人体试验证实延缓生物学衰老——DunedinPACE 时钟减慢 9%</a></div>
+      <div class="summary">UC San Diego 团队发表于《Nature Communications》的里程碑研究提供了 GLP-1 药物抗衰老的首个随机对照人类证据。在 108 名 HIV 感染者的临床试验中，每周注射 semaglutide 显著减缓了多种表观遗传时钟的衰老进程。HIV 患者即使在抗病毒治疗有效的情况下也经历加速衰老，而 semaglutide 改变了这一局面——DunedinPACE 时钟（衡量衰老速度）减慢 9%，PCGrimAge 时钟（衡量年龄相关疾病和死亡风险）显示显著改善。研究通讯作者 Michael Corley 博士表示，这一发现将 GLP-1 药物的潜在用途从代谢疾病扩展到了衰老干预领域，并已开启进一步探索在其他人群中验证此效果的研究计划。</div>
+      <div class="meta"><span>2026-07-13</span><a href="https://www.sciencedaily.com/releases/2026/07/260713084907.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-teal);">运动生理</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260712011755.htm">运动不只强心——它重新"接线"了心脏的神经控制网络</a></div>
+      <div class="summary">布里斯托大学发表于《Autonomic Neuroscience》的研究首次揭示，规律的中等强度有氧运动能重塑心脏调控神经，且左右两侧的改造方式截然不同。通过三维立体成像技术，研究发现经过 10 周训练的实验动物右侧心血管神经簇的神经元数量增加约 3 倍（相比未训练动物），而左侧神经元体积几乎翻倍、右侧反而略微缩小。这种"左右不对称重构"可能解释了为何某些心脏治疗在不同侧效果各异。研究领衔作者 Augusto Coppi 博士比喻称："这些神经簇就像心脏的调光开关，运动以一种前所未有的方式重新设置了开关的左右配比。"该发现为心律失常、心绞痛、应激性心肌病的精准治疗提供了全新的神经解剖学基础。</div>
+      <div class="meta"><span>2026-07-12</span><a href="https://www.sciencedaily.com/releases/2026/07/260712011755.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-mint);">神经科学</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260712011757.htm">大脑隐藏的决策网络被发现——感觉皮层在"思考"之前就已参与决策</a></div>
+      <div class="summary">伊利诺伊大学香槟分校在《PNAS》发表挑战传统认知的研究：决策过程并非仅在高级前额叶皮层完成，早期感觉皮层早在信息到达高级区域之前就已积极参与决策计算。研究团队由电气与计算机工程教授 Yurii Vlasov 领导，发现大脑依赖的是跨区域双向反馈回路，而非传统的单向信息流层级模型。这一发现不仅改写了神经科学对决策机制的认知，还为设计类脑人工智能——尤其是能效远超现有神经网络的新型计算架构——提供了演化生物学启发的设计蓝图。研究将"自然智能"作为 AI 设计的参照系，挑战了统治深度学习领域数十年的卷积神经网络理念。</div>
+      <div class="meta"><span>2026-07-12</span><a href="https://www.sciencedaily.com/releases/2026/07/260712011757.htm">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">二次怀孕重塑大脑——Amsterdam UMC 追踪 110 名女性发现每次怀孕在大脑留下独特烙印，首次影响默认模式网络，二次则重塑注意力和感觉处理网络（ScienceDaily, 2026-07-11）</div>
+      <div class="speed-item">辣椒摄入与消化道癌症再惹争议——《Frontiers in Nutrition》大型综述发现最高辣椒消费组食管癌风险升高，但研究强调相关性不等于因果（ScienceDaily, 2026-07-13）</div>
+    </div>
+  </div>
+
+  <!-- Section: 基因 & 细胞治疗 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-贪吃.avif" alt="" class="icon-img">
+      <h3>基因 & 细胞治疗</h3>
+      <span class="hint" style="color:var(--accent-teal);">口服疫苗 · 酵母免疫 · 生物传感</span>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-green);">肿瘤免疫</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260714/Bifidobacterium-based-oral-vaccine-enhances-anti-tumor-immunity-in-clinical-study.aspx">双歧杆菌口服疫苗增强抗肿瘤免疫——无需注射的癌症免疫疗法</a></div>
+      <div class="summary">研究者开发出一种基于基因工程双歧杆菌的新型口服疫苗平台，利用肠道益生菌作为活体载体递送肿瘤抗原，在临床研究中显著增强抗肿瘤免疫。与传统的注射型癌症疫苗不同，该口服平台通过肠道黏膜免疫系统激活全身性抗癌反应。双歧杆菌天然具有免疫佐剂活性，经基因改造后可在肠道内持续表达肿瘤抗原，诱导树突状细胞交叉呈递并激活特异性 CD8+ T 细胞。如果这一策略在大规模临床中验证有效，将意味着癌症患者未来可能只需口服一粒"疫苗胶囊"即可获得持久的抗肿瘤免疫保护，大幅降低治疗门槛和成本。</div>
+      <div class="meta"><span>2026-07-14</span><a href="https://www.news-medical.net/news/20260714/Bifidobacterium-based-oral-vaccine-enhances-anti-tumor-immunity-in-clinical-study.aspx">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-teal);">免疫营养</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260709/Yeast-food-supplement-helps-immune-cells-fight-cancer-more-effectively.aspx">酵母营养补充剂首次被证实可强化免疫细胞抗癌能力</a></div>
+      <div class="summary">都柏林圣三一学院和都柏林大学学院的研究团队首次证明，一种从酵母制成的食物补充剂能帮助身体制造更强效的免疫细胞来对抗癌症。研究显示，该补充剂可通过调节免疫细胞代谢、增强线粒体活性的方式，使自然杀伤（NK）细胞和细胞毒性 T 细胞在肿瘤微环境中保持更高的杀伤活性。与直接注射细胞因子的方式相比，这种方法副作用更小且可口服摄入。研究团队表示，这一"免疫营养"策略有望成为癌症免疫治疗的辅助手段，帮助提升现有免疫检查点抑制剂和 CAR-T 疗法的效果，同时改善患者的生活质量。</div>
+      <div class="meta"><span>2026-07-09</span><a href="https://www.news-medical.net/news/20260709/Yeast-food-supplement-helps-immune-cells-fight-cancer-more-effectively.aspx">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-mint);">生物传感</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260714/Ultrasensitive-biosensor-detects-early-stage-liver-fibrosis-using-small-amount-of-blood.aspx">超灵敏电化学生物传感器——一滴血即可检测早期肝纤维化</a></div>
+      <div class="summary">韩国成均馆大学联合天主教大学医学院开发出一种超灵敏电化学生物传感器，仅需少量血液样本即可精准检测早期肝纤维化——肝脏渐进性硬化但尚未发展为肝硬化的阶段。目前早期肝纤维化的诊断依赖肝穿刺活检（有创、有风险）或影像学检查（设备昂贵、灵敏度有限）。该传感器通过检测血液中特定的纤维化生物标志物浓度，实现了无创、快速、低成本的早期诊断。肝纤维化一旦进入肝硬化阶段便不可逆转，因此早期检测是预防肝衰竭和肝癌的关键防线。该技术如果成功临床转化，将极大提高肝病高危人群（如脂肪肝、乙肝携带者）的筛查覆盖率。</div>
+      <div class="meta"><span>2026-07-14</span><a href="https://www.news-medical.net/news/20260714/Ultrasensitive-biosensor-detects-early-stage-liver-fibrosis-using-small-amount-of-blood.aspx">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">定向酶进化——Frances Arnold 在 News-Medical 访谈中讲述实验室进化酶的技术如何变革酶工程与绿色化工产业（News-Medical, 2026-07-14）</div>
+      <div class="speed-item">科学家揭示麻醉诱导无意识的分子机制——Weill Cornell 团队识别出常用麻醉药与钠离子通道结合的精确位点（News-Medical, 2026-07-09）</div>
+    </div>
+  </div>
+
+  <!-- Section: 健康 & 长寿生活 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-晚安.avif" alt="" class="icon-img">
+      <h3>健康 & 长寿生活</h3>
+      <span class="hint" style="color:var(--accent-mint);">痴呆 · 脂肪肝 · 食品添加剂</span>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-green);">神经精神病学</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260714/Medical-THC-and-CBD-formulation-significantly-reduces-late-life-dementia-agitation.aspx">THC+CBD 配方显著减轻晚期痴呆患者激越行为——首项临床试验</a></div>
+      <div class="summary">美国研究者在首项此类临床试验中发现，一种含 THC 和 CBD 的特殊医用大麻配方能显著减轻晚期痴呆患者的激越症状。激越（agitation）是痴呆患者最常见的神经精神症状之一，表现为攻击性、焦虑、游走和尖叫，给患者本人和照护者带来巨大痛苦。目前常用抗精神病药物（如奥氮平、利培酮）在黑框警告中注明增加老年患者死亡风险。该研究显示 THC/CBD 联合配方在减轻激越方面显著优于安慰剂，且耐受性良好。这一发现为难治性痴呆行为症状提供了全新的药物选择路径，绕开了抗精神病药物的安全风险。</div>
+      <div class="meta"><span>2026-07-14</span><a href="https://www.news-medical.net/news/20260714/Medical-THC-and-CBD-formulation-significantly-reduces-late-life-dementia-agitation.aspx">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-teal);">全球健康</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260713000804.htm">研究发现居住地环境影响痴呆症风险——覆盖 61 国、数十万人的全球分析</a></div>
+      <div class="summary">《The Lancet Healthy Longevity》及阿尔茨海默病协会国际大会（AAIC 2026 伦敦）上公布的 USC 主导的大规模研究，分析了来自 61 个国家的高收入和低收入地区数据，揭示了痴呆症风险因素在不同地区的巨大差异。研究发现，中国 85.6% 的老年人受教育程度低（美国仅 12%），而美国 44.9% 的老年人高 BMI（印度仅 13.3%）。尽管具体风险因素分布不同，心血管疾病风险因素（高胆固醇、高血压）和生活方式因素（吸烟、饮酒）往往在全球各地区同时出现。这一发现意味着痴呆症预防策略不能简单照搬高收入国家模式，而是需要根据不同地区的主导风险因素进行本土化调整。</div>
+      <div class="meta"><span>2026-07-13</span><a href="https://www.sciencedaily.com/releases/2026/07/260713000804.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-mint);">肝脏疾病</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260711010116.htm">实验性药物 DT-109 通过修复肠道逆转重度脂肪肝</a></div>
+      <div class="summary">密歇根大学医学院发表于《Journal of Clinical Investigation》的研究展示了实验性化合物 DT-109（一种甘氨酸基三肽）治疗 MASH（代谢功能障碍相关脂肪性肝炎）的惊人效果。MASH 影响全球约 7% 的人口，是肝硬化和肝癌的主要前驱病变，目前有效治疗手段极为有限。研究发现 DT-109 的作用机制并非直接靶向肝脏，而是通过保护肠道上皮屏障、阻止有害微生物产物进入体循环来间接逆转肝脏病变。研究团队表示："该化合物对胃肠系统有益，作为 MASH 治疗药物具有巨大潜力。"这一"肠道-肝脏轴"的治疗思路，为脂肪肝药物研发开辟了与传统肝靶向策略截然不同的新赛道。</div>
+      <div class="meta"><span>2026-07-11</span><a href="https://www.sciencedaily.com/releases/2026/07/260711010116.htm">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">黄原胶慢性摄入与结肠炎症相关——这种常见食品添加剂（增稠/稳定剂）存在于冰淇淋、酸奶、酱料中，研究建议减少加工食品摄入（News-Medical, 2026-07-13）</div>
+      <div class="speed-item">睡眠中的随机声音干扰脑波并损害记忆巩固——弗莱堡团队发现即使非觉醒状态下，环境噪声也会弱化睡眠纺锤波和新记忆固化（News-Medical, 2026-07-09）</div>
+    </div>
+  </div>
+
+  <!-- Sources -->
+  <div class="sources">
+    <h3>信息来源</h3>
+    <ol>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260713084907.htm">ScienceDaily — Semaglutide Slows Biological Aging</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260712011755.htm">ScienceDaily — Exercise Rewires Heart Nerves</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260712011757.htm">ScienceDaily — Hidden Decision Network in Brain</a></li>
+      <li><a href="https://www.news-medical.net/news/20260714/Bifidobacterium-based-oral-vaccine-enhances-anti-tumor-immunity-in-clinical-study.aspx">News-Medical — Oral Bifidobacterium Vaccine</a></li>
+      <li><a href="https://www.news-medical.net/news/20260709/Yeast-food-supplement-helps-immune-cells-fight-cancer-more-effectively.aspx">News-Medical — Yeast Supplement &amp; Cancer Immunity</a></li>
+      <li><a href="https://www.news-medical.net/news/20260714/Ultrasensitive-biosensor-detects-early-stage-liver-fibrosis-using-small-amount-of-blood.aspx">News-Medical — Liver Fibrosis Biosensor</a></li>
+      <li><a href="https://www.news-medical.net/news/20260714/Medical-THC-and-CBD-formulation-significantly-reduces-late-life-dementia-agitation.aspx">News-Medical — THC/CBD for Dementia Agitation</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260713000804.htm">ScienceDaily — Dementia Risk Factors Across 61 Countries</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260711010116.htm">ScienceDaily — DT-109 Reverses Fatty Liver</a></li>
+      <li><a href="https://www.news-medical.net/news/20260713/Study-links-chronic-xanthan-gum-consumption-to-colon-inflammation.aspx">News-Medical — Xanthan Gum &amp; Colon Inflammation</a></li>
+    </ol>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <img src="../../assets/images/大黄蜂-点头.gif" alt="" class="footer-img">
+    <div class="footer-logo">Bio & Health Daily</div>
+    <p>
+      每日精选 · 值得关注<br>
+      由 Hermes Agent 自动化生成<br>
+      返回 <a href="../index.html">首页存档</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
