@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Game Dev News — 2026-07-17</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <img src="../../assets/images/初音未来-可爱头像.jpg" alt="" class="header-avatar">
+    <div class="header-text">
+      <a href="../index.html" style="color:inherit;text-decoration:none;"><h1>每日速递</h1></a>
+      <div class="sub">Daily Game Dev News</div>
+    </div>
+    <div class="header-tags">
+      <span class="tag-dev">开发</span>
+      <span class="tag-game">游戏圈</span>
+      <span class="tag-ai">AI</span>
+    </div>
+  </div>
+
+  <div class="edition-bar">
+    <span class="date">2026年7月17日 星期五</span>
+    <span>第 13 期</span>
+  </div>
+
+  <div class="keywords">
+    <span>Inkling</span>
+    <span>Open-Weights</span>
+    <span>Steam Deck</span>
+    <span>Sony DRM</span>
+    <span>Moonshot AI</span>
+  </div>
+
+  <!-- Headline -->
+  <div class="headline">
+    <img src="../../assets/images/初音未来-盯着你.avif" alt="" class="headline-img">
+    <h2>Inkling: Thinking Machines 发布开放权重模型，HN 获 1135 票引爆讨论</h2>
+    <p>加拿大 AI 公司 Thinking Machines 正式发布 Inkling，一个开放权重的大语言模型，在 Hacker News 上引发广泛讨论（1135 票、278 条评论）。Inkling 在多项基准测试中表现优异，被视为开源模型阵营的重要新成员。与此同时，另一中国 AI 创业公司 Moonshot（月之暗面）也宣布将推出挑战 Anthropic 的新模型。AI 开源模型生态正在加速扩军。</p>
+    <div class="src">来源：<a href="https://thinkingmachines.ai/news/introducing-inkling/">Thinking Machines / Hacker News</a></div>
+  </div>
+
+    <div class="mermaid-wrapper">
+    <div class="mermaid">
+      timeline
+        title 本周游戏 &amp; AI 要闻
+        7月13日 : AffineUI 发布 : Xbox CEO 被征召入就业工作组
+        7月14日 : Sony 削弱数字所有权 : 环保人士将40TB数据做游戏
+        7月15日 : Inkling 开放权重模型发布 : Valve 停售 Steam Deck LCD 零件
+        7月16日 : Moonshot 宣布挑战 Anthropic : 逆向工程80年代街机
+    </div>
+  </div>
+  <!-- Section: 游戏开发 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-贪吃.avif" alt="" class="icon-img">
+      <h3>游戏开发动态</h3>
+      <span class="hint">引擎 · 工具 · 开源</span>
+    </div>
+    <div class="news-item">
+      <span class="tag dev">引擎更新</span>
+      <div class="title"><a href="https://github.com/affineui/affineui">AffineUI：两个文件替换 Electron 的 C++ GPU 加速 HTML5 UI 引擎</a></div>
+      <div class="summary">开源项目 AffineUI 发布——仅需一个 .cpp 和 .h 文件即可嵌入任意 C++ 项目，提供 GPU 加速的 HTML5 渲染。设计目标是成为 DearIMGUI 与 Electron 之间的中间方案：比 IMGUI 更强大，比 Electron 轻量两个数量级。同时提供 Python、Rust、.NET 绑定。</div>
+      <div class="meta"><span>2026-07-13</span><a href="https://github.com/affineui/affineui">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag dev">开发工具</span>
+      <div class="title"><a href="https://fippi.io/reverse-engineering-adventure-canoe/">Reverse-engineering：重访 80 年代 Taito SJ 街机游戏的逆向工程之旅</a></div>
+      <div class="summary">一篇深入的技术回顾——作者对 Taito SJ 系统上一款被人遗忘的 80 年代街机游戏 Adventure Canoe 进行了完整逆向工程，揭示了复古游戏开发的技术细节与系统架构。适合游戏开发者了解早期街机硬件。</div>
+      <div class="meta"><span>2026-07-16</span><a href="https://fippi.io/reverse-engineering-adventure-canoe/">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag dev">技术文章</span>
+      <div class="title"><a href="https://github.com/sirixdb/sirix">SirixDB 1.0 Beta：类 Git 版本控制的 JSON 数据库，支持时间旅行查询</a></div>
+      <div class="summary">SirixDB 发布 1.0 Beta 版——一个将历史作为一等公民的文档数据库。每个提交都存储可查询的轻量级快照，支持任意时间点查询、差异对比和高效的历史数据追踪。使用了 Java 的 Foreign Function & Memory API 实现 off-heap 存储架构。</div>
+      <div class="meta"><span>2026-07-15</span><a href="https://github.com/sirixdb/sirix">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">GWZ：Rust 实现的多仓库管理工具，让 multi-repo 用起来像 plain Git（github.com/owebeeone/gwz-cli）</div>
+      <div class="speed-item">WebMotion：浏览器原生确定性视频合成库，帧精确导出无需服务器（webmotion.superhq.ai）</div>
+    </div>
+  </div>
+
+  <!-- Section: 游戏圈 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/雷霆表情包-震惊香蕉.jpg" alt="" class="icon-img">
+      <h3>游戏圈新闻</h3>
+      <span class="hint">新游 · 行业 · 数据</span>
+    </div>
+    <div class="news-item">
+      <span class="tag game">行业要闻</span>
+      <div class="title"><a href="https://news.ycombinator.com/item?id=48916185">Valve 悄然停售 Steam Deck LCD 版 iFixit 替换零件</a></div>
+      <div class="summary">Valve 不再通过 iFixit 供应 Steam Deck LCD 版替换零件，Steam Deck OLED 配件则仍正常供应。此举引发了社区对 Steam Deck LCD 长期可维修性的担忧。此前 Valve 曾承诺让 Steam Deck 成为最易维修的游戏掌机之一。</div>
+      <div class="meta"><span>2026-07-15</span><a href="https://news.ycombinator.com/item?id=48916185">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag game">新游推荐</span>
+      <div class="title"><a href="https://www.eff.org/deeplinks/2026/07/sony-nerfs-videogame-ownership">Sony 再度削弱数字游戏所有权：EFF 警告玩家权益倒退</a></div>
+      <div class="summary">EFF（电子前哨基金会）发文批评 Sony 最新政策进一步削弱了数字游戏所有权。此前 Sony 已删除用户"购买"的电影，现在游戏领域也面临类似问题。数字购买不等于真正拥有的问题再次引发行业讨论。</div>
+      <div class="meta"><span>2026-07-14</span><a href="https://www.eff.org/deeplinks/2026/07/sony-nerfs-videogame-ownership">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag game">数据趋势</span>
+      <div class="title"><a href="https://blog.exe.dev/meet-the-conservationist-who-turned-40-terabytes-of-government-data-into-a-video-game">一位环保人士将 40TB 政府数据做成了电子游戏</a></div>
+      <div class="summary">一位自然保护主义者将 40TB 的美国政府公共数据转化为一个视频游戏。该项目展示了如何将枯燥的政府数据集通过游戏化的方式变得生动有趣，获得了 HN 111 票的热烈讨论。</div>
+      <div class="meta"><span>2026-07-14</span><a href="https://blog.exe.dev/meet-the-conservationist-who-turned-40-terabytes-of-government-data-into-a-video-game">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">小学老师复活经典游戏《Backyard Baseball》——致敬童年回忆（nytimes.com）</div>
+      <div class="speed-item">Redditor 用 SSD 为 Steam 库制作"游戏卡带"系统——Steam Game Cartridges</div>
+    </div>
+  </div>
+
+  <!-- Section: AI圈 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/爱因斯坦-牢大.jpg" alt="" class="icon-img">
+      <h3>AI 圈发展</h3>
+      <span class="hint">模型 · 工具 · 研究</span>
+    </div>
+    <div class="news-item">
+      <span class="tag ai">模型发布</span>
+      <div class="title"><a href="https://thinkingmachines.ai/news/introducing-inkling/">Inkling：Thinking Machines 发布开放权重模型（1135 HN 票）</a></div>
+      <div class="summary">加拿大 AI 公司 Thinking Machines 正式发布 Inkling 开放权重大语言模型。该模型在多项基准测试中表现出色，HN 社区 278 条评论展开了热烈的技术讨论，包括模型架构、训练方法、开放协议等多个维度。</div>
+      <div class="meta"><span>2026-07-15</span><a href="https://thinkingmachines.ai/news/introducing-inkling/">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag ai">工具框架</span>
+      <div class="title"><a href="https://www.ft.com/content/c6ecd8ce-c441-4d7c-aea6-fae3e28fb6ff">中国 AI 创业公司 Moonshot（月之暗面）将推出挑战 Anthropic 的新模型</a></div>
+      <div class="summary">据 Financial Times 报道，中国 AI 独角兽 Moonshot AI（月之暗面，Kimi 背后公司）即将发布新一代模型，目标直接对标 Anthropic 的 Claude 系列。此举标志着中国 AI 公司在高端大模型领域的竞争进一步升级。</div>
+      <div class="meta"><span>2026-07-16</span><a href="https://www.ft.com/content/c6ecd8ce-c441-4d7c-aea6-fae3e28fb6ff">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag ai">研究应用</span>
+      <div class="title"><a href="https://techcrunch.com/2026/07/15/anthropic-blackstone-bet-the-next-trillion-dollar-ai-business-is-implementation-not-models/">Anthropic 与 Blackstone 押注：下一个万亿美元 AI 生意在于实施而非模型本身</a></div>
+      <div class="summary">Anthropic 与 Blackstone 联合发文认为，AI 行业的下一波万亿级机会不在于训练更大的模型，而在于将 AI 能力落地到实际业务场景中。这一观点引发了关于"前沿模型 vs 开源模型"以及"模型 vs 应用层"的深入讨论。</div>
+      <div class="meta"><span>2026-07-15</span><a href="https://techcrunch.com/2026/07/15/anthropic-blackstone-bet-the-next-trillion-dollar-ai-business-is-implementation-not-models/">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">MIT 新方法可检测 AI 模型是否使用违规训练数据，无需生成原内容（insideai.news）</div>
+      <div class="speed-item">美企转向中国 AI 模型降低成本——NPR 报道初创公司"用不起"美国大模型（npr.org）</div>
+    </div>
+  </div>
+
+  <!-- Sources -->
+  <div class="sources">
+    <h3>信息来源</h3>
+    <ol>
+      <li><a href="https://thinkingmachines.ai/news/introducing-inkling/">Thinking Machines — Inkling: Our Open-Weights Model</a></li>
+      <li><a href="https://www.ft.com/content/c6ecd8ce-c441-4d7c-aea6-fae3e28fb6ff">FT — Chinese AI startup Moonshot to launch model challenging Anthropic</a></li>
+      <li><a href="https://github.com/affineui/affineui">GitHub — AffineUI: 2-file C++ GPU HTML5 UI Engine</a></li>
+      <li><a href="https://www.eff.org/deeplinks/2026/07/sony-nerfs-videogame-ownership">EFF — Sony Nerfs Videogame Ownership</a></li>
+      <li><a href="https://blog.exe.dev/meet-the-conservationist-who-turned-40-terabytes-of-government-data-into-a-video-game">exe.dev — The Conservationist Who Turned 40TB Data into a Video Game</a></li>
+    </ol>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <img src="../../assets/images/大黄蜂-点头.gif" alt="" class="footer-img">
+    <div class="footer-logo">Daily Game Dev News</div>
+    <p>
+      每日精选 · 值得关注<br>
+      返回 <a href="../index.html">首页存档</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
