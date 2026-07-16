@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生物 & 永生 & 健康 — 2026-07-17</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+:root {
+  --accent-green: #2d6a4f;
+  --accent-teal: #52b788;
+  --accent-mint: #95d5b2;
+  --bg: #f5f5f0;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --text-soft: #555;
+  --text-muted: #999;
+  --border: #e8e8e3;
+  --radius: 12px;
+  --shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+body {
+  background: var(--bg);
+  font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.header-avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%; object-fit: cover;
+  flex-shrink: 0;
+}
+.header-text { flex: 1; }
+.header-text h1 {
+  font-size: 1.5em; font-weight: 700;
+  letter-spacing: -0.3px; margin: 0;
+}
+.header-text .sub {
+  font-size: 0.75em; color: var(--text-muted);
+  letter-spacing: 2px; margin-top: 2px;
+}
+.header-tags {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.header-tags span {
+  font-size: 0.65em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.edition-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 0.75em;
+  color: var(--text-soft);
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.5px;
+}
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.keywords span {
+  background: #e8f5e9;
+  color: var(--accent-green);
+  font-size: 0.7em;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.headline-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: #eee;
+}
+.headline h2 {
+  font-size: 1.3em;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+.headline p {
+  font-size: 0.85em;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+.headline .src {
+  font-size: 0.7em;
+  color: var(--text-muted);
+}
+.section { padding: 24px 0; border-bottom: 1px solid var(--border); }
+.section:last-of-type { border-bottom: none; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.icon-img {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.section-header h3 {
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+.section-header .hint {
+  font-size: 0.65em;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-left: auto;
+}
+.news-item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0ed;
+}
+.news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.news-item .tag {
+  font-size: 0.65em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 4px;
+}
+.news-item .title {
+  font-weight: 600;
+  font-size: 0.9em;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.news-item .title a { color: var(--text); text-decoration: none; }
+.news-item .title a:hover { color: var(--accent-green); }
+.news-item .summary {
+  font-size: 0.8em;
+  color: var(--text-soft);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+.news-item .meta {
+  font-size: 0.7em;
+  color: var(--text-muted);
+  display: flex;
+  gap: 12px;
+}
+.news-item .meta a { color: var(--accent-teal); text-decoration: none; }
+.news-item .meta a:hover { text-decoration: underline; }
+.speed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+.speed-item {
+  background: #f9f9f5;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.72em;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+.sources {
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+}
+.sources h3 {
+  font-size: 0.85em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.sources ol {
+  font-size: 0.75em;
+  color: var(--text-soft);
+  padding-left: 18px;
+}
+.sources ol li { margin-bottom: 4px; }
+.sources ol li a { color: var(--accent-teal); text-decoration: none; }
+.sources ol li a:hover { text-decoration: underline; }
+.footer {
+  text-align: center;
+  padding: 24px 0;
+}
+.footer-img {
+  width: 40px; height: 40px;
+  border-radius: 50%; object-fit: cover;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+.footer-logo {
+  font-size: 0.75em;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.footer p {
+  font-size: 0.7em;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.footer a { color: var(--text-muted); text-decoration: none; }
+.footer a:hover { color: var(--accent-green); }
+a { color: var(--accent-teal); }
+@media (max-width: 480px) {
+  .container { padding: 20px 14px; }
+  .header { flex-wrap: wrap; }
+  .speed-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <img src="../../assets/images/初音未来-可爱.avif" alt="" class="header-avatar">
+    <div class="header-text">
+      <a href="../index.html" style="color:inherit;text-decoration:none;"><h1>生物 & 永生 & 健康</h1></a>
+      <div class="sub">Bio · Longevity · Health</div>
+    </div>
+    <div class="header-tags">
+      <span style="background:var(--accent-green);color:#fff;">癌症</span>
+      <span style="background:var(--accent-teal);color:#fff;">阿尔茨海默</span>
+      <span style="background:var(--accent-mint);color:#1b4332;">帕金森</span>
+    </div>
+  </div>
+
+  <div class="edition-bar">
+    <span class="date">2026年7月17日 星期五</span>
+    <span>第 10 期</span>
+  </div>
+
+  <div class="keywords">
+    <span>PARP抑制剂</span>
+    <span>替米沙坦</span>
+    <span>神经元骨架</span>
+    <span>帕金森传播</span>
+    <span>DNA纳米平台</span>
+    <span>脑刺激触觉</span>
+    <span>农药暴露</span>
+  </div>
+
+  <!-- Headline -->
+  <div class="headline">
+    <img src="../../assets/images/初音未来-盯着你.avif" alt="" class="headline-img">
+    <h2>重大突破：常见降压药让癌症靶向药效力猛增——替米沙坦+奥拉帕利组合进入临床试验</h2>
+    <p>达特茅斯癌症中心（DCC）发表于《Journal for ImmunoTherapy of Cancer》的研究发现，一种已上市数十年的常用降压药替米沙坦（telmisartan）能显著提升 PARP 抑制剂奥拉帕利（olaparib）的抗癌活性。关键在于，这种增效作用并不依赖于肿瘤是否携带 BRCA 突变——而 BRCA 突变正是 PARP 抑制剂有效性的传统前提条件。替米沙坦通过双重机制发挥作用：一方面直接增加癌细胞的 DNA 损伤使 PARP 抑制剂更容易"捕捉"到目标，另一方面激活 I 型干扰素通路增强免疫系统对肿瘤的识别和攻击。研究在多种动物模型中验证了这一组合的强效协同作用，相关人体临床试验已经启动。如果临床验证成功，数百万目前对 PARP 抑制剂不敏感的癌症患者将有机会受益于这一"老药新用"策略。</p>
+    <div class="src">来源：<a href="https://www.sciencedaily.com/releases/2026/07/260709160648.htm">ScienceDaily — Common Blood Pressure Drug Could Make Cancer Therapy Far More Powerful</a></div>
+  </div>
+
+  <!-- Section: 抗衰老前沿 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-可爱.avif" alt="" class="icon-img">
+      <h3>抗衰老前沿</h3>
+      <span class="hint" style="color:var(--accent-green);">阿尔茨海默 · 帕金森 · 文化长寿</span>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-green);">阿尔茨海默</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260714225542.htm">隐藏在脑细胞内的"骨架门卫"被发现——稳定它或可阻止阿尔茨海默病</a></div>
+      <div class="summary">宾州州立大学在《Science Advances》发表研究，揭示神经元内部一种被称为膜相关周期性骨架（MPS）的微观结构远比想象中更为重要。MPS 由重复的蛋白质环构成，位于神经元表面下方，此前被认为仅是维持细胞形态的被动支撑结构。但研究团队利用超分辨率成像技术发现，MPS 实际上是一个"分子门卫"——控制着神经元何时、何地吸收外界物质（即胞吞作用）。当 MPS 结构弱化时，神经元会不加选择地迅速摄入与阿尔茨海默病相关的有害蛋白（如 Aβ 和 tau）。研究通讯作者 Zhou 博士早在 2013 年就参与发现了 MPS，但直到现在才揭示其真正的功能角色——一个决定神经元生死的关键调控器。稳定 MPS 结构可能成为阻止神经退行性病变进展的全新策略。</div>
+      <div class="meta"><span>2026-07-14</span><a href="https://www.sciencedaily.com/releases/2026/07/260714225542.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-teal);">帕金森病</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260710003529.htm">耶鲁发现帕金森病在大脑中的传播机制——两种表面蛋白是关键"渡船"</a></div>
+      <div class="summary">耶鲁医学院在《Nature Communications》发表的研究揭示了帕金森病为何会在大脑中逐步扩散的核心机制。帕金森病的标志性病理特征是毒性蛋白 α-突触核蛋白（α-synuclein）在大脑中的异常聚集和扩散。耶鲁团队发现，两种神经元表面蛋白 mGluR4 和 NPDC1 充当了这种毒性蛋白进入健康神经元的"渡船"。在动物模型中，阻断这两种蛋白可显著减缓疾病进展。研究通讯作者、耶鲁神经学系主任 Stephen Strittmatter 博士表示，这一发现为开发能够延缓甚至阻止帕金森病进展的新型疗法打开了大门——目前所有帕金森药物都只能控制症状而非延缓病程。该成果将引导药物研发从"症状管理"转向"病因干预"。</div>
+      <div class="meta"><span>2026-07-10</span><a href="https://www.sciencedaily.com/releases/2026/07/260710003529.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-mint);">健康老龄化</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260714225526.htm">去博物馆、看电影、看戏剧——这些文化活动让你的身体比实际年龄年轻 3 岁</a></div>
+      <div class="summary">东京医科齿科大学（Institute of Science Tokyo）发表于《Journal of Epidemiology and Community Health》的首项纵向研究提供了令人愉悦的抗衰老证据：定期参与文化活动（博物馆、影院、音乐会、剧院）的中老年人，其生理年龄比同龄人年轻约 3 岁。研究分析了英国老龄化纵向研究中 1,899 名 50 岁以上成年人的数据，发现文化参与度与生理年龄呈显著负相关。研究人员认为，更强的社会联系、更好的心理健康和更健康的生活习惯可能综合解释了这一关联。这提示抗衰老不必只有运动和节食——丰富精神文化生活同样是延缓衰老的重要途径。当然，研究目前尚不能证明因果关系，但文化活动的低风险性和多重收益使其几乎"稳赚不赔"。</div>
+      <div class="meta"><span>2026-07-14</span><a href="https://www.sciencedaily.com/releases/2026/07/260714225526.htm">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">吃甜菜根后嚼口香糖可临时降低血压——King's College London 发现糖分降低口腔 pH 值后加速硝酸盐→亚硝酸盐转化，改善血流（ScienceDaily, 2026-07-13）</div>
+      <div class="speed-item">辣椒摄入与食管癌风险升高相关——《Frontiers in Nutrition》大型综述分析 14 项研究 1.1 万参与者，最高消费组食管癌风险显著提高，但相关性≠因果（ScienceDaily, 2026-07-13）</div>
+    </div>
+  </div>
+
+  <!-- Section: 基因 & 细胞治疗 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-贪吃.avif" alt="" class="icon-img">
+      <h3>基因 & 细胞治疗</h3>
+      <span class="hint" style="color:var(--accent-teal);">DNA纳米 · 神经调控 · 乳腺癌症</span>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-green);">DNA纳米技术</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260716/Novel-DNA-nanoplatform-offers-hope-for-chronic-gum-disease.aspx">DNA 纳米平台为慢性牙周病带来治疗新希望——精准靶向致病菌</a></div>
+      <div class="summary">全球数百万慢性牙周炎患者面临一个棘手问题：即便经过常规牙周治疗，深层牙周袋中的致病菌仍然难以清除，最终导致牙齿支持组织逐渐破坏、牙齿松动脱落。研究者开发出一种基于 DNA 纳米结构的新型治疗平台，可精准靶向牙周致病菌（如牙龈卟啉单胞菌 P. gingivalis），在不破坏口腔有益菌群的前提下实现高效抗菌。DNA 纳米结构具有天然的生物相容性和可编程性，可在指定位点释放抗菌载荷或调控局部免疫微环境。这一"智能 DNA 机器人"式的精准治疗策略，有望改变牙周病主要依赖机械刮治和广谱抗生素的现状，为口腔慢性感染治疗开启纳米医学新路径。</div>
+      <div class="meta"><span>2026-07-16</span><a href="https://www.news-medical.net/news/20260716/Novel-DNA-nanoplatform-offers-hope-for-chronic-gum-disease.aspx">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-teal);">神经调控</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260716/Long-term-study-proves-brain-stimulation-safely-restores-touch.aspx">长期研究证实脑深部电刺激可安全恢复触觉——失手感觉有望找回</a></div>
+      <div class="summary">脊髓损伤或周围神经损伤后失去手部触觉的患者，未来或可通过脑内微电脉冲重新获得感觉。长期临床研究证实，通过向大脑负责触觉处理的区域（体感皮层）递送微小幅度的电脉冲，可以安全、持续地恢复部分触觉感知。研究打破了此前关于脑机接口长期植入安全性的疑虑——长期植入的电极在数年内未引起明显组织损伤或功能退化。这一成果为开发实用的"感觉神经假体"铺平了道路，不仅让机械手"有感觉"，更可能帮助中风后偏瘫、截肢后幻肢痛等大量患者改善生活质量。研究团队强调，当前重点已从"能否实现"转向"如何让系统更精细、更自然"。</div>
+      <div class="meta"><span>2026-07-16</span><a href="https://www.news-medical.net/news/20260716/Long-term-study-proves-brain-stimulation-safely-restores-touch.aspx">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-mint);">三阴性乳腺癌</span>
+      <div class="title"><a href="https://www.news-medical.net/news/20260716/Weill-Cornell-Medicine-receives-DoD-grant-to-target-triple-negative-breast-cancer.aspx">Weill Cornell 获 250 万美元国防部拨款——攻坚最难治乳腺癌的副作用更小新疗法</a></div>
+      <div class="summary">Weill Cornell Medicine 获得美国国防部为期三年、总额 250 万美元的研究资助，用于开发治疗三阴性乳腺癌（TNBC）的低副作用新疗法。三阴性乳腺癌是乳腺癌中最具侵袭性、预后最差的亚型，占所有乳腺癌的 10-15%，因缺乏雌激素受体（ER）、孕激素受体（PR）和 HER2 表达，对内分泌治疗和 HER2 靶向治疗均不敏感，化疗目前仍是主要治疗手段但副作用严重。该资助支持的研究方向包括：开发靶向 TNBC 特有表面标记的新型抗体药物偶联物（ADC）、利用肿瘤微环境调控增强免疫治疗效果、以及探索能够绕过传统化疗毒性的新机制药物。</div>
+      <div class="meta"><span>2026-07-16</span><a href="https://www.news-medical.net/news/20260716/Weill-Cornell-Medicine-receives-DoD-grant-to-target-triple-negative-breast-cancer.aspx">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">定向酶进化大师访谈——诺贝尔奖得主 Frances Arnold 讲述如何在实验室让酶"进化"，随机突变+智能筛选改变绿色化工和制药产业（News-Medical, 2026-07-14）</div>
+      <div class="speed-item">柠檬霜豹纹守宫——这种宠物蜥蜴 80% 自然长出侵袭性肿瘤，其基因突变与人类癌症高度相似，成为研究肿瘤自然演进的重要模型（ScienceDaily, 2026-07-14）</div>
+    </div>
+  </div>
+
+  <!-- Section: 健康 & 长寿生活 -->
+  <div class="section">
+    <div class="section-header">
+      <img src="../../assets/images/初音未来-晚安.avif" alt="" class="icon-img">
+      <h3>健康 & 长寿生活</h3>
+      <span class="hint" style="color:var(--accent-mint);">肺癌 · 视觉 · 癌症模型</span>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-green);">癌症流行病学</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260712011758.htm">不吸烟的年轻人健康饮食为何与肺癌风险挂钩？——USC 抛出农药暴露假说</a></div>
+      <div class="summary">南加州大学 Norris 综合癌症中心在美国癌症研究协会（AACR）年会上公布的一项研究得出了令人不安的反直觉结论：50 岁以下从不吸烟的年轻人中，饮食更为健康（摄入更多蔬果和全谷物）的人群反而面临更高的肺癌风险。研究领衔者 Jorge Nieva 医生明确表示：问题不在食物本身，而在于商业化种植的蔬果中可能残留的农药。既往研究已显示，农业工人长期农药暴露与肺癌发病率升高相关。研究还发现，不吸烟的年轻女性患肺癌比男性更常见，且女性恰好蔬果摄入量更高。研究团队强调这些发现只是初步的、提示性的，但足以引起公众对食品农药残留安全的重新审视。</div>
+      <div class="meta"><span>2026-07-12</span><a href="https://www.sciencedaily.com/releases/2026/07/260712011758.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-teal);">视觉科学</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260713000804.htm">耶鲁科学家发现眼睛内部的"隐藏通信网络"——\"指挥官\"细胞协调视觉信号</a></div>
+      <div class="summary">耶鲁医学院在《Neuron》发表的研究颠覆了教科书级的视觉处理模型。传统理论认为，视网膜将视觉信息分解为颜色、对比度、运动和形状等不同特征，通过 12 条以上平行的独立通道分别传递到大脑。但耶鲁团队发现，这些通道之间并非彼此隔离——它们通过隐藏的电连接紧密互联。研究鉴定出一种此前未被认识的"指挥官"细胞，负责协调不同通道间的协作，强化弱视觉信号使其更易被深部视觉系统检测到。这一发现解释了人类为何能在弱光或低对比度条件下仍能识别模糊物体，并为设计类脑视觉芯片和计算机视觉算法提供了全新的生物灵感。</div>
+      <div class="meta"><span>2026-07-13</span><a href="https://www.sciencedaily.com/releases/2026/07/260713000804.htm">阅读原文</a></div>
+    </div>
+    <div class="news-item">
+      <span class="tag" style="color:var(--accent-mint);">癌症生物学</span>
+      <div class="title"><a href="https://www.sciencedaily.com/releases/2026/07/260714225525.htm">这只宠物守宫或能解开癌症的秘密——柠檬霜突变为何 80% 长肿瘤</a></div>
+      <div class="summary">英国诺丁汉大学发表于《BMC Biology》的研究发现，一种名为"柠檬霜"（lemon frost）的特殊豹纹守宫品种在宠物贸易中颇受欢迎，但其约 80% 的个体会在早年自发发展出高度侵袭性的肿瘤。研究团队对这些爬行动物的肿瘤进行了基因组分析，发现其导致的基因变异与人类多种癌症中的关键通路异常高度相似。爬行动物中癌症风险差异巨大——龟类极少患癌，但此品种守宫却异常易感。研究通讯作者 Chiari 博士表示：通过研究不同物种对癌症的易感性和耐受性，可以揭示物种在演化过程中应对肿瘤的不同策略，这些自然策略可能启发全新的人类癌症预防、检测和治疗方法。</div>
+      <div class="meta"><span>2026-07-14</span><a href="https://www.sciencedaily.com/releases/2026/07/260714225525.htm">阅读原文</a></div>
+    </div>
+    <div style="margin:12px 0 4px;"><span style="font-size:0.7em;color:var(--text-muted);letter-spacing:1px;">速览</span></div>
+    <div class="speed-grid">
+      <div class="speed-item">黄原胶（常见食品增稠剂）慢性摄入与结肠炎症相关——存在于冰淇淋、酸奶、酱料中，研究建议减少超加工食品摄入（News-Medical, 2026-07-13）</div>
+      <div class="speed-item">联邦减尼古丁战略可预防数百万早死——Rutgers Health 研究显示降低香烟尼古丁含量可显著减少吸烟者数量并缩小贫困人群健康差距（News-Medical, 2026-07-16）</div>
+    </div>
+  </div>
+
+  <!-- Sources -->
+  <div class="sources">
+    <h3>信息来源</h3>
+    <ol>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260709160648.htm">ScienceDaily — Telmisartan + PARP 抑制剂癌症突破</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260714225542.htm">ScienceDaily — 神经元骨架门卫与阿尔茨海默</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260710003529.htm">ScienceDaily — 帕金森传播机制——两种表面蛋白</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260714225526.htm">ScienceDaily — 文化活动与生理年龄</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260714225525.htm">ScienceDaily — 柠檬霜守宫与癌症模型</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260713000804.htm">ScienceDaily — 视网膜隐藏通信网络</a></li>
+      <li><a href="https://www.sciencedaily.com/releases/2026/07/260712011758.htm">ScienceDaily — 不吸烟年轻人肺癌与农药暴露</a></li>
+      <li><a href="https://www.news-medical.net/news/20260716/Novel-DNA-nanoplatform-offers-hope-for-chronic-gum-disease.aspx">News-Medical — DNA 纳米平台治疗牙周病</a></li>
+      <li><a href="https://www.news-medical.net/news/20260716/Long-term-study-proves-brain-stimulation-safely-restores-touch.aspx">News-Medical — 脑刺激恢复触觉</a></li>
+      <li><a href="https://www.news-medical.net/news/20260716/Weill-Cornell-Medicine-receives-DoD-grant-to-target-triple-negative-breast-cancer.aspx">News-Medical — Weill Cornell 三阴性乳腺癌</a></li>
+    </ol>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <img src="../../assets/images/大黄蜂-点头.gif" alt="" class="footer-img">
+    <div class="footer-logo">Bio & Health Daily</div>
+    <p>
+      每日精选 · 值得关注<br>
+      由 Hermes Agent 自动化生成<br>
+      返回 <a href="../index.html">首页存档</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
